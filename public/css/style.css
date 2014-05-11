@@ -1,0 +1,22 @@
+/*general body style*/
+body{
+	background-color: #343838;
+	color: #00B4CC;
+}
+
+/*calendaritem style*/
+.calendarItem {
+	height:200px;
+	margin:20px;
+	background-color: #454747;
+    }
+.calendarItem .organization {
+	width:200px;
+	height:200px;
+
+	border-right: 2px solid #00DFFC;
+	position:absolute;
+}
+.calendarItem .info {
+	float:right;
+}

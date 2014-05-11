@@ -11,11 +11,32 @@
 |
 */
 
-Route::get('/', function()
+/* PRACTICE ROUTES
+Route::get('/', array(
+	'before'=>'birthday:08/05,hoi wereld',
+	function()
+	{
+	//return View::make('hello');
+    return 'In soviet Russia, function defines you.';
+	}
+));
+
+Route::get('/test/{squirrel?}', function($squirrel = null)
 {
-	return View::make('hello');
+	if($squirrel == null) return Redirect::to('/');
+	$data['squirrel'] = $squirrel;
+	return View::make('simple', $data);
 });
 
-Route::get('amazon', function(){
-	return "hallo world!";
+route::controller('controllertest', 'HomeController');
+
+Route::get('/current/url', function()
+{
+    return URL::current();
+});
+*/
+
+Route::get('/', function()
+{
+    return View::make('home');
 });

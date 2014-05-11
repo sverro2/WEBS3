@@ -1,5 +1,4 @@
 <?php
-echo "Pure";
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
