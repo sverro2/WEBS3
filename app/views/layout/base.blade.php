@@ -3,7 +3,7 @@
 	<head>
 	    <meta charset="UTF-8">
 	    {{-- set the page title, if not specified, revert to default --}}
-	    <title>{{ isset($pageTitle) ? $pageTitle : 'AirCalendar' }}</title>
+	    <title>{{ isset($pageTitle) ? $pageTitle : 'AirCentral' }}</title>
 
 	    {{-- Load in twitter bootstrap --}}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -25,8 +25,8 @@
 		  <div class="container">
 		    <div class="row">
 		      <div class="col-md-7">
-		        <h1>AirCalendar
-		          <p class="lead">Your airsoft event resource</p>
+		        <h1>AirCentral
+		          <p class="lead">Event calendar</p>
 		        </h1>
 		      </div>
 		      <div class="col-md-5">

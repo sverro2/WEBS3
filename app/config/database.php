@@ -51,7 +51,7 @@ return array(
 			'host'      => 'databases.aii.avans.nl',
 			'database'  => 'yahegge_db',
 			'username'  => 'yahegge',
-			'password'  => 'Ab1234',
+			'password'  => 'Ab12345',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

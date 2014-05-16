@@ -38,5 +38,6 @@ Route::get('/current/url', function()
 
 Route::get('/', function()
 {
-    return View::make('home');
+	$data['events'] = AirsoftEvent::all();
+    return View::make('home', $data);
 });
