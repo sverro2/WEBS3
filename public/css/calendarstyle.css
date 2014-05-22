@@ -101,6 +101,76 @@ a,a:hover {
   padding:6px;
   color:#fff;
 }
+
+.container{
+  width:851px;
+}
+
+.eventrow{
+  border:solid 1px gray;
+  border-radius: 2px;
+  height:215px;
+  box-shadow: 2px -1px 10px 0;
+  margin-top:10px;
+  margin-bottom: 10px;
+
+  color:white;
+  font-weight: bold;
+  background-position:center;
+  background-size:cover;
+}
+
+.eventrow h4{
+  font-weight:normal;
+  font-size:20px;
+  margin-bottom:0px;
+  margin-top:5px;
+}
+
+.eventrow .subtitle{
+  padding-top:0px;
+  margin-top:0px;
+  font-size:15px;
+}
+
+.eventrow .left-row{
+  height:100%;
+}  
+
+.eventrow .bar-container{
+  height:75%;
+}  
+
+.eventrow .left-bar{
+  height:100%;
+} 
+
+.eventrow .dateday{
+  background-color:rgba(56,56,56,0.5);
+  float:left;
+  border:solid 2px rgba(230,230,230,0.9);
+  border-radius: 5px;
+  padding:5px;
+  margin-top:10px;
+  text-align:center
+;}
+
+.eventrow .dateday .date{
+  font-size: 20px;
+}
+
+.eventrow .bottom-bar{
+  height:25%;
+  padding-left:15px;
+  background-color:rgba(56,56,56,0.5);
+}
+
+.eventrow .right-bar{
+  height:100%;
+  font-size:15px;
+  line-height:15px;
+  vertical-align: bottom;
+}
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}

@@ -1,4 +1,27 @@
-<div class="row">    
+<div class="row eventrow" style="background-image:url( {{ $banner }} )">
+
+    <div class="col-md-9 left-row">
+      <div class="row bar-container">
+        <div class="col-md-3 left-bar">
+          <div class="dateday">
+            <span class="date">{{ $event->getSimpleStartDate() }}</span><br/>
+            <span class="day">{{ $event->getDay()}}</span>
+          </div>
+        </div>
+        <div class="col-md-9"></div>
+      </div>
+      <div class="row bottom-bar">
+        <h4>{{ $name }}</h4>
+        <span class="subtitle">By {{ $event->getOrganisationName() }}</span>
+      </div>
+    </div>
+    <div class="col-md-3 right-bar">
+      <div class="row bar-container"></div>
+      <div class="row bottom-bar">
+        <h4>Bekijk details <span class="glyphicon glyphicon-chevron-right"></span></h4>
+      </div>
+    </div>
+    <!--
     <br>
     <div class="col-md-2 col-sm-3 text-center">
       <a class="story-img" href="#"><img src="//placehold.it/100" style="width:100px;height:100px" class="img-circle"></a>
@@ -18,3 +41,5 @@
     </div>
   </div>
   <hr>
+  -->
+</div>
