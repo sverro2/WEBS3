@@ -9,7 +9,7 @@
 	      {{ Form::password('password', array('placeholder' => 'Wachtwoord', 'class'=>'form-control input-lg')) }}
 	    </div>
 	    <div class="form-group">
-	      {{ Form::password('password', array('placeholder' => 'Wachtwoord bevestigen', 'class'=>'form-control input-lg')) }}
+	      {{ Form::password('passwordconfirm', array('placeholder' => 'Wachtwoord bevestigen', 'class'=>'form-control input-lg')) }}
 	    </div>
 	    <div class="form-group">
 	      {{ Form::submit('Aanmelden', array('class'=>'btn btn-primary btn-lg btn-block')) }}
