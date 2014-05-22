@@ -16,6 +16,9 @@
 
 	    {{-- load in custom css --}}
 	    {{ HTML::style('css/calendarstyle.css') }}
+
+	    {{-- load in custom javascripts --}}
+	    {{ HTML::script('js/login.js') }}
 	</head> 
 	<body  >
         
@@ -45,7 +48,7 @@
 		</div>
 
 
-		<div class="container">
+		<div class="container" id="content">
 		  <div class="row">
 		    
 		    <div class="col-md-12"> 
@@ -53,10 +56,9 @@
 		      <div class="panel">
 		        <div class="panel-body">
 		        
-		          @yield('events')
+		          @yield('content')
+		          @include('layout.elements.login')
 		          
-		          
-		          <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
 		        
 		          
 		        </div>
@@ -102,7 +104,7 @@
 		      </div>
 		      <div class="col-sm-6">
 		          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a><br/>
-	          		
+
 		          </p>      
 		      </div>
 		    </div>

@@ -28,16 +28,26 @@ Route::get('/test/{squirrel?}', function($squirrel = null)
 	return View::make('simple', $data);
 });
 
-route::controller('controllertest', 'HomeController');
+route::controller('/', 'HomeController');
 
 Route::get('/current/url', function()
 {
     return URL::current();
 });
-*/
 
 Route::get('/', function()
 {
 	$data['events'] = AirsoftEvent::all();
     return View::make('home', $data);
+});
+*/
+
+//Route::get('/', 'HomeController@getIndex');
+
+Route::get('/', 'HomeController@getIndex');
+
+Route::controller('account', 'AccountController');
+
+Route::get('reset', function(){
+	Session::flush();
 });

@@ -15,9 +15,14 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function getWelcome($param)
+	public function __construct() {
+		
+	}
+
+	public function getIndex()
 	{
-		return View::make('hello');
+		$data['events'] = AirsoftEvent::all();
+		return View::make('home', $data);
 	}
 
 }

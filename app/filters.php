@@ -79,9 +79,8 @@ Route::filter('csrf', function()
 	}
 });
 
-Route::filter('birthday', function($route, $request, $date, $text)
+Route::filter('false', function()
 {
-    if (date('d/m') == $date) {
-        return $text;
-    }
+	var_dump('hi');
+    return Redirect::route('/');;
 });

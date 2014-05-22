@@ -1,6 +1,6 @@
-@extends('layout.calendar')
+@extends('layout.base')
 
-@section('events')
+@section('content')
 	@foreach($events as $event)
 		@include('layout.elements.eventrow', $event)
 	@endforeach

@@ -7,6 +7,10 @@ body {
   padding-top:50px;
 }
 
+#content{
+  max-width: 851px;
+}
+
 footer {
   margin-top:40px;
   padding-top:40px;
@@ -102,14 +106,10 @@ a,a:hover {
   color:#fff;
 }
 
-.container{
-  width:851px;
-}
-
 .eventrow{
   border:solid 1px gray;
   border-radius: 2px;
-  height:215px;
+  min-height:0px;
   box-shadow: 2px -1px 10px 0;
   margin-top:10px;
   margin-bottom: 10px;
@@ -118,6 +118,9 @@ a,a:hover {
   font-weight: bold;
   background-position:center;
   background-size:cover;
+
+  min-height: 215px;
+  height:215px;
 }
 
 .eventrow h4{
@@ -125,6 +128,10 @@ a,a:hover {
   font-size:20px;
   margin-bottom:0px;
   margin-top:5px;
+}
+
+.eventrow .row-content{
+  height:100%;
 }
 
 .eventrow .subtitle{
@@ -141,9 +148,6 @@ a,a:hover {
   height:75%;
 }  
 
-.eventrow .left-bar{
-  height:100%;
-} 
 
 .eventrow .dateday{
   background-color:rgba(56,56,56,0.5);
@@ -166,10 +170,22 @@ a,a:hover {
 }
 
 .eventrow .right-bar{
+  text-align: right;
   height:100%;
   font-size:15px;
   line-height:15px;
   vertical-align: bottom;
+}
+
+.eventrow .mobile-arrow{
+  text-align:right;
+  margin-top:5px;
+  background-color:rgba(56,56,56,0.5);
+  border:solid 2px rgba(230,230,230,0.9);
+  border-radius: 5px;
+  padding:2px;
+  margin-top:10px;
+  float:right;
 }
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
