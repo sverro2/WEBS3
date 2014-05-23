@@ -3,6 +3,7 @@
 class AirsoftEvent extends Eloquent {
 	protected $table = 'event';
 
+	public $organisation;
 
 	public function getSimpleStartDate(){
 		setlocale(LC_TIME, 'nld_nld');  
@@ -17,7 +18,15 @@ class AirsoftEvent extends Eloquent {
 	}
 
 	public function getOrganisationName(){
-		$orga = Organisation::find($this->organisation_id);
-		return $orga->name;
+		$organisation = Organisation::find($this->organisation_id);
+		return $organisation->name;
+	}
+
+	public function getOrganisation(){
+		return Organisation::find($this->organisation_id);
+	}
+
+	public function organisation(){
+		return $this->belongsTo('Organisation');
 	}
 }

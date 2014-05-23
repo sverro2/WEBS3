@@ -1,3 +1,4 @@
+<a href={{ url('event/' . $event->name) }} class="bannerlink">
 <div class="row eventrow" style="background-image:url( {{ $banner }} )">
     <div class="col-sm-12 row-content">
       <div class="row bar-container">
@@ -16,7 +17,11 @@
       <div class="row bottom-bar">
         <div class="col-sm-9">
           <h4>{{ $name }}</h4>
-          <span class="subtitle">By {{ $event->getOrganisationName() }}</span>
+          <span class="subtitle">
+            </a>
+            <a href= {{ url('organisatie/' . $event->organisation()->first()->url) }} class="organisation-link">By {{ $event->organisation()->first()->name }}</a>
+            <a href={{ url('event/' . $event->name) }} class="bannerlink">
+          </span>
         </div>
         <div class="col-sm-3 right-bar hidden-xs">
           <h4>Bekijk details <span class="glyphicon glyphicon-chevron-right"></span></h4>
@@ -24,3 +29,4 @@
       </div>
     </div>
 </div>
+</a>

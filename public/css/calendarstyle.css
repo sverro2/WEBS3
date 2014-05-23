@@ -24,6 +24,18 @@
   margin-top:5px;
 }
 
+.eventrow a:hover{
+  color:white;
+}
+
+.eventrow .organisation-link:hover{
+  font-size: 15px;
+}
+
+.eventrow a{
+  color:white;
+}
+
 .eventrow .row-content{
   height:100%;
 }

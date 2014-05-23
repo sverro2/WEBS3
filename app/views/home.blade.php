@@ -2,6 +2,6 @@
 
 @section('content')
 	@foreach($events as $event)
-		@include('layout.elements.eventrow', $event)
+		@include('calendar.elements.eventrow', $event)
 	@endforeach
 @stop

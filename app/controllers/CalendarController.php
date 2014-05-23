@@ -11,10 +11,10 @@ class CalendarController extends BaseController {
 		return Redirect::to('/');
 	}
 
-	public function getOrganisation($organisation_name)
+	public function getOrganisation($organisation_url)
 	{
-		$data['organisation'] = Organisation::where('url', '=', $organisation_name)->firstOrFail();
-		return View::make('organisation', $data);
+		$data['organisation'] = Organisation::where('url', '=', $organisation_url)->firstOrFail();
+		return View::make('calendar.organisation', $data);
 	}
 
 }
