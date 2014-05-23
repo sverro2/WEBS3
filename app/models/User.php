@@ -80,4 +80,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function getType()
+	{
+		return AccountType::find($this->account_type)->name;
+	}
+
+	public function isAdmin(){
+		if($this->getType() === "admin"){
+			return true;
+		}
+		return false;
+	}
+
 }

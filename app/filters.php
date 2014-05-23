@@ -44,6 +44,20 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('auth.admin', function(){
+	if(Session::has('user'))
+	{
+		if(!(Session::get('user')->isAdmin())) 
+		{
+			return Redirect::to('/');
+		}
+		
+	}else{
+		return Redirect::to('/');
+	}
+
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

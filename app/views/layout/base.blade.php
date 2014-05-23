@@ -14,8 +14,12 @@
 		{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}
 		{{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
 
+	    {{-- load in fonts --}}
+		{{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans') }}
+
 	    {{-- load in custom css --}}
 	    {{ HTML::style('css/calendarstyle.css') }}
+	    {{ HTML::style('css/style.css') }}
 
 	    {{-- load in custom javascripts --}}
 	    {{ HTML::script('js/login.js') }}
@@ -47,6 +51,8 @@
 		 
 		</div>
 
+		@section('container')
+
 
 		<div class="container" id="content">
 		  <div class="row">
@@ -57,7 +63,6 @@
 		        <div class="panel-body">
 		        
 		          @yield('content')
-		          @include('layout.elements.login')
 		          
 		        
 		          
@@ -69,7 +74,8 @@
 		   	</div><!--/col-12-->
 		  </div>
 		</div>
-		                                                
+		@show   
+		@include('layout.elements.login')                                             
 		                                                                                
 		<hr>
 

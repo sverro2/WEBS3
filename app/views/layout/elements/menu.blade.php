@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">Home</a>
+      <a href= {{ url('/') }} class="navbar-brand">Home</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -27,9 +27,12 @@
       <ul class="nav navbar-right navbar-nav">
       	<li class="dropdown">
           @if (Session::has('user'))
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Welkom, {{ Session::get('user')->username }} </a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-cog"></span> Welkom, {{ Session::get('user')->username }} </a>
             <ul class="dropdown-menu">
-              <li><a href={{ url('account/logout') }}>Afmelden</a></li>
+              @if (Session::get('user')->isAdmin())
+                <li><a href={{ url('admin') }}>Administratie<span class="glyphicon glyphicon-wrench"></span></a></li>
+              @endif
+              <li><a href={{ url('account/logout') }}>Afmelden<span class="glyphicon glyphicon-off"></span></a></li>
             </ul>
           @else
         	 <button type="button" id="signin" class="btn btn-default navbar-btn">Sign in</button>

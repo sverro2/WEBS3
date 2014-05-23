@@ -48,6 +48,8 @@ Route::get('/', 'HomeController@getIndex');
 
 Route::controller('account', 'AccountController');
 
+Route::controller('admin', 'AdminController');
+
 Route::get('reset', function(){
 	Session::flush();
 });
