@@ -27,7 +27,7 @@
 	<body  >
         
         @include('layout.elements.menu')
-
+        @section('title')
 		<div id="masthead">  
 		  <div class="container">
 		    <div class="row">
@@ -47,7 +47,7 @@
 		      </div>
 		    </div> 
 		  </div><!-- /cont -->
-		  
+		  @show
 		 
 		</div>
 
@@ -74,8 +74,8 @@
 		   	</div><!--/col-12-->
 		  </div>
 		</div>
-		@show   
-		@include('layout.elements.login')                                             
+		@show  
+		@include('account.elements.login')                                             
 		                                                                                
 		<hr>
 

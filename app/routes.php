@@ -50,6 +50,8 @@ Route::controller('account', 'AccountController');
 
 Route::controller('admin', 'AdminController');
 
+Route::get('organisatie/{organisation_name}', 'CalendarController@getOrganisation');
+
 Route::get('reset', function(){
 	Session::flush();
 });

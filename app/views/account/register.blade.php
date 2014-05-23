@@ -12,8 +12,8 @@
 	      {{ Form::password('passwordconfirm', array('placeholder' => 'Wachtwoord bevestigen', 'class'=>'form-control input-lg', 'required'=>'')) }}
 	    </div>
 	    <div class="form-group">
-	      {{ Form::submit('Aanmelden', array('class'=>'btn btn-primary btn-lg btn-block')) }}
-	      <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+	      {{ Form::submit('Registreren', array('class'=>'btn btn-primary btn-lg btn-block')) }}
+		<span class="pull-right"><a href={{ url('account/login') }}>Ik heb al een account</a></span>
 	    </div>
 	{{ Form::close() }}
 @stop

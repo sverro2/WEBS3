@@ -49,11 +49,11 @@ Route::filter('auth.admin', function(){
 	{
 		if(!(Session::get('user')->isAdmin())) 
 		{
-			return Redirect::to('/');
+			return Redirect::to('account/login');
 		}
 		
 	}else{
-		return Redirect::to('/');
+		return Redirect::to('account/login');
 	}
 
 });

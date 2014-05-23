@@ -15,6 +15,11 @@ class AccountController extends BaseController {
 		return View::make('home', $data);
 	}
 
+	public function getLogin()
+	{
+		return View::make('account.login');
+	}
+
 	public function postLogin()
 	{
 		$name = Input::get('username');
@@ -22,7 +27,10 @@ class AccountController extends BaseController {
 
 		$peppered = sha1(sha1($pass) . sha1($this->pepper));
 		$user = User::where('username', '=', $name)->firstOrFail();
-
+		if($user === null)
+		{
+			Redirect::to('account/login');
+		}
 		$salt = $user->salt;
 
 		$salted = sha1($peppered . sha1($salt));
@@ -38,13 +46,15 @@ class AccountController extends BaseController {
 		if($salted === $user->password)
 		{
 			Session::put('user', $user);
+		}else{
+			return Redirect::to('account/login');
 		}
 		return Redirect::to('/');
 	}
 
 	public function getRegister()
 	{
-		return View::make('register');
+		return View::make('account.register');
 	}
 
 	public function postRegister()

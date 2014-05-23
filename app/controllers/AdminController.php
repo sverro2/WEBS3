@@ -8,7 +8,7 @@ class AdminController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('admin');
+		return View::make('admin.home');
 	}
 
 }
