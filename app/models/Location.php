@@ -16,4 +16,13 @@ class Location extends Eloquent {
 	{
 		return $this->hasMany('AirsoftEvent');
 	}
+
+	public function getBannerAttribute()
+	{
+		if(is_null($this->attributes['banner']))
+		{
+			return $this->organisation->banner;
+		}
+		return $this->attributes['banner'];
+	}
 }

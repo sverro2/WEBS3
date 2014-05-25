@@ -19,7 +19,7 @@
           <h4>{{ $name }}</h4>
           <span class="subtitle">
             </a>
-            <a href= {{ url('organisatie/' . $event->organisation()->first()->url) }} class="organisation-link">By {{ $event->organisation()->first()->name }}</a>
+            <a href= {{ url('organisatie/' . $event->organisation->url) }} class="organisation-link">By {{ $event->organisation->name }}</a>
             <a href={{ url('event/' . $event->url) }} class="bannerlink">
           </span>
         </div>

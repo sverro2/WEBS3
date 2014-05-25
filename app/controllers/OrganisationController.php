@@ -8,7 +8,7 @@ class OrganisationController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::orga_home();
+		return View::make('orga_home');
 	}
 
 	public function getNewEvent(){
