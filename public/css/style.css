@@ -20,7 +20,7 @@ footer{
   padding-bottom:40px;
   background-color:rgba(75,75,75,0.7);
 
-  color:#9A0C05;
+  color:#c1c1c1;
   bottom:0;
 }
 
@@ -35,6 +35,11 @@ footer{
 
 .navbar a{
   color:#c1c1c1 !important;
+}
+
+.navbar .btn{
+  color:#c1c1c1 !important;
+  background-color: #88342F;
 }
 
 #content{

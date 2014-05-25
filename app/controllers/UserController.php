@@ -5,6 +5,7 @@ class UserController extends BaseController {
 	private $pepper = "TgRNPFr00Z";
 
 	public function __construct() {
+		parent::__construct();
 		$this->beforeFilter('csrf', array('only' => 'postLogin'));
 		$this->beforeFilter('csrf', array('only' => 'postRegister'));
 	}

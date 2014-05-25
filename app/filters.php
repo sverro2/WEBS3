@@ -24,7 +24,7 @@ App::after(function($request, $response)
 
 App::missing(function($exception)
 {
-	return View::make('404');
+	return Redirect::to('err/page-not-found');
 });
 
 /*

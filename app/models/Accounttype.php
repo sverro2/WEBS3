@@ -1,5 +1,5 @@
 <?php
 
-class Accounttype extends Eloquent {
+class AccountType extends Eloquent {
 	protected $table = 'account_type';
 }

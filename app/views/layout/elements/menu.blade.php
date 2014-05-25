@@ -26,12 +26,19 @@
       </ul>
       <ul class="nav navbar-right navbar-nav">
       	<li class="dropdown">
-          @if (Session::has('user'))
+          @if (! is_null($user))
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-cog"></span> Welkom, {{ Session::get('user')->username }} </a>
             <ul class="dropdown-menu">
+
+              <li class="divider"></li>
               @if (Session::get('user')->isAdmin())
                 <li><a href={{ url('admin') }}>Administratie<span class="glyphicon glyphicon-wrench"></span></a></li>
+                <li class="divider"></li>
+                @foreach($organisations as $organisation)
+                  <li><a href={{ url('org/') . $organisation->url }}>{{ $organisation->name }}<span class="glyphicon glyphicon-cog"></span></a></li>
+                @endforeach
               @endif
+              <li class="divider"></li>
               <li><a href={{ url('account/logout') }}>Afmelden<span class="glyphicon glyphicon-off"></span></a></li>
             </ul>
           @else

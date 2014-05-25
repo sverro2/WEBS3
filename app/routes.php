@@ -11,38 +11,9 @@
 |
 */
 
-/* PRACTICE ROUTES
-Route::get('/', array(
-	'before'=>'birthday:08/05,hoi wereld',
-	function()
-	{
-	//return View::make('hello');
-    return 'In soviet Russia, function defines you.';
-	}
-));
-
-Route::get('/test/{squirrel?}', function($squirrel = null)
-{
-	if($squirrel == null) return Redirect::to('/');
-	$data['squirrel'] = $squirrel;
-	return View::make('simple', $data);
-});
-
-route::controller('/', 'HomeController');
-
-Route::get('/current/url', function()
-{
-    return URL::current();
-});
-
-Route::get('/', function()
-{
-	$data['events'] = AirsoftEvent::all();
-    return View::make('home', $data);
-});
-*/
-
 //Route::get('/', 'HomeController@getIndex');
+
+
 
 Route::get('/', 'HomeController@getIndex');
 
@@ -52,8 +23,11 @@ Route::controller('admin', 'AdminController');
 
 Route::controller('org', 'OrganisationController');
 
+Route::controller('err', 'ErrorController');
+
 Route::get('organisatie/{organisation_url}', 'CalendarController@getOrganisation');
 
 Route::get('reset', function(){
 	Session::flush();
 });
+
