@@ -46,9 +46,11 @@ Route::get('/', function()
 
 Route::get('/', 'HomeController@getIndex');
 
-Route::controller('account', 'AccountController');
+Route::controller('account', 'UserController');
 
 Route::controller('admin', 'AdminController');
+
+Route::controller('org', 'OrganisationController');
 
 Route::get('organisatie/{organisation_url}', 'CalendarController@getOrganisation');
 

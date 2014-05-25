@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href= {{ url('/') }} class="navbar-brand">Home</a>
+      <a href= {{ url('/') }} class="navbar-brand">Aircentral</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">

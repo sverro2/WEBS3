@@ -1,6 +1,6 @@
 <?php
 
-class AccountController extends BaseController {
+class UserController extends BaseController {
 
 	private $pepper = "TgRNPFr00Z";
 
@@ -50,6 +50,20 @@ class AccountController extends BaseController {
 			return Redirect::to('account/login');
 		}
 		return Redirect::to('/');
+	}
+	
+  
+	protected function isPostRequest()
+	{
+	return Input::server("REQUEST_METHOD") == "POST";
+	}
+
+	protected function getLoginValidator()
+	{
+	return Validator::make(Input::all(), [
+	  "username" => "required",
+	  "password" => "required"
+	]);
 	}
 
 	public function getRegister()

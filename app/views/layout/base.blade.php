@@ -28,26 +28,6 @@
         
         @include('layout.elements.menu')
         @section('title')
-		<div id="masthead">  
-		  <div class="container">
-		    <div class="row">
-		      <div class="col-md-7">
-		        <h1>AirCentral
-		          <p class="lead">Event calendar</p>
-		        </h1>
-		      </div>
-		      <div class="col-md-5">
-		        <div class="well well-lg"> 
-		          <div class="row">
-		            <div class="col-sm-12">
-		              Ad Space			
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </div> 
-		  </div><!-- /cont -->
-		  @show
 		 
 		</div>
 
@@ -76,26 +56,7 @@
 		</div>
 		@show  
 		@include('account.elements.login')                                             
-		                                                                                
-		<hr>
-
-		<div class="container" id="footer">
-		  <div class="row">
-		    <div class="col col-sm-12">
-		      
-		      <h1>Follow Us</h1>
-		      <div class="btn-group">
-		       <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
-			   <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
-			   <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
-		      </div>
-		      
-		    </div>
-		  </div>
-		</div>
-
-		<hr>
-
+		 
 		<footer>
 		  <div class="container">
 		    <div class="row">
@@ -109,7 +70,7 @@
 		        
 		      </div>
 		      <div class="col-sm-6">
-		          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a><br/>
+		          <p class="pull-right">By Sven Brettschneider &amp; Yannik Hegge</a><br/>
 
 		          </p>      
 		      </div>
