@@ -17,6 +17,10 @@
   height:215px;
 }
 
+.rules{
+  overflow: scroll;
+}
+
 #banner{
   min-height:315px;
   height:315px;

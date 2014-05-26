@@ -5,6 +5,6 @@ class RuleSet extends Eloquent {
 
 	public function rules()
 	{
-		return $this->belongsToMany('Rule');
+		return $this->belongsToMany('Rule','ruleset_rule','ruleset_id','rule_id');
 	}
 }

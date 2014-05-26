@@ -1,7 +1,5 @@
 @extends('layout.base')
 
-@section('title') @stop
-
 @section('content')
 	<div class="row eventrow" id="banner" style="background-image:url( {{$organisation->banner}} )">
 		<div class="col-sm-12 row-content">

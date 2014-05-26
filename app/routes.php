@@ -13,19 +13,17 @@
 
 //Route::get('/', 'HomeController@getIndex');
 
-
-
 Route::get('/', 'HomeController@getIndex');
 
 Route::controller('account', 'UserController');
 
 Route::controller('admin', 'AdminController');
 
-Route::controller('org', 'OrganisationController');
+Route::controller('manage', 'ManageController');
 
 Route::controller('err', 'ErrorController');
 
-Route::get('organisatie/{organisation_url}', 'CalendarController@getOrganisation');
+Route::controller('organisation', 'OrganisationController');
 
 Route::get('reset', function(){
 	Session::flush();

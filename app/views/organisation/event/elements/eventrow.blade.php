@@ -1,4 +1,4 @@
-<a href={{ url('event/' . $event->url) }} class="bannerlink">
+<a href={{ url('organisation/event/' . $event->url) }} class="bannerlink">
 <div class="row eventrow" style="background-image:url( {{ $banner }} )">
     <div class="col-sm-12 row-content">
       <div class="row bar-container">
@@ -19,8 +19,8 @@
           <h4>{{ $name }}</h4>
           <span class="subtitle">
             </a>
-            <a href= {{ url('organisatie/' . $event->organisation->url) }} class="organisation-link">By {{ $event->organisation->name }}</a>
-            <a href={{ url('event/' . $event->url) }} class="bannerlink">
+            <a href= {{ url('organisation/index/' . $event->organisation->url) }} class="organisation-link">By {{ $event->organisation->name }}</a>
+            <a href={{ url('organisation/event/' . $event->url) }} class="bannerlink">
           </span>
         </div>
         <div class="col-sm-3 right-bar hidden-xs">

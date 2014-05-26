@@ -63,6 +63,22 @@ Route::filter('auth.admin', function(){
 
 });
 
+Route::filter('auth.manages', function($route, $request)
+{
+	$url = Request::segment(3); //dirty code to get organisation url, will have to fix later
+	if(Session::has('user'))
+	{
+		$user = Session::get('user');
+		foreach($user->organisations as $organisation)
+		{
+			if(!($url === $organisation->url))
+				return Redirect::to('account/login');
+		}
+	}else{
+	return Redirect::to('account/login');
+	}	
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

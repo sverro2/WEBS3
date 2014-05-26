@@ -37,7 +37,7 @@
               @if ($user->organisations->count() > 0)
                 <li class="divider"></li>
                 @foreach($user->organisations as $organisation)
-                  <li><a href={{ url('org/') . $organisation->url }}>{{ $organisation->name }}<span class="glyphicon glyphicon-cog"></span></a></li>
+                  <li><a href={{ url('manage/organisation/' . $organisation->url) }}>{{ $organisation->name }}<span class="glyphicon glyphicon-cog"></span></a></li>
                 @endforeach
               <li class="divider"></li>
               @endif
