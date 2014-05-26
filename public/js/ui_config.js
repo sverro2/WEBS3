@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+   /*---------------------------LOGIN WINDOW-----------------------------*/
 	//show the login form when the sign in button is clicked
    	$('#signin').click(function(){
    		$('#loginModal').show(150);
@@ -19,4 +20,7 @@ $( document ).ready(function() {
          console.log('closing');
       });
 
+      /*---------------------------ACCORDION-----------------------------*/
+      $('.accordion').accordion();
 });
+

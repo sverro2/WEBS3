@@ -15,6 +15,7 @@
 		{{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
 
 	    {{-- load in fonts --}}
+	    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js') }}
 		{{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans') }}
 
 	    {{-- load in custom css --}}
@@ -22,7 +23,7 @@
 	    {{ HTML::style('css/style.css') }}
 
 	    {{-- load in custom javascripts --}}
-	    {{ HTML::script('js/login.js') }}
+	    {{ HTML::script('js/ui_config.js') }}
 	</head> 
 	<body  >
         
@@ -33,30 +34,31 @@
 
 		@section('container')
 
-
-		<div class="container" id="content">
-		  <div class="row">
-		    
-		    <div class="col-md-12"> 
-		      
-		      <div class="panel">
-		        <div class="panel-body">
-		        
-		          @yield('content')
-		          
-		        
-		          
-		        </div>
-		      </div>
-		                                                                                       
-			                                                
-		                                                      
-		   	</div><!--/col-12-->
-		  </div>
-		</div>
-		@show  
-		@include('account.elements.login')                                             
-		 
+		<div id="wrap">
+			<div class="container" id="content">
+			  <div class="row">
+			    
+			    <div class="col-md-12"> 
+			      
+			      <div class="panel">
+			        <div class="panel-body">
+			        
+			          @yield('content')
+			          
+			        
+			          
+			        </div>
+			      </div>
+			                                                                                       
+				                                                
+			                                                      
+			   	</div><!--/col-12-->
+			  </div>                                    
+			<div id="push"></div>
+			</div>
+			@show  
+			@include('account.elements.login')       
+		</div>  
 		<footer>
 		  <div class="container">
 		    <div class="row">

@@ -1,5 +1,4 @@
 
-
 .eventrow{
   border:solid 1px rgba(100,100,100,1);
   border-radius: 2px;
@@ -15,6 +14,31 @@
 
   min-height: 215px;
   height:215px;
+}
+
+.eventrow_text{
+  border-bottom:solid 1px rgba(100,100,100,1);
+  min-height:0px;
+ /*box-shadow: 2px -1px 10px 0 black;*/
+  margin-top:15px;
+  margin-bottom: 15px;
+
+  font-weight: bold;
+  background-position:center;
+  background-size:cover;
+}
+
+.eventrow_text h3{
+  margin-top:10px;
+  margin-bottom:0px;
+}
+
+.eventrow_text .leftspacing{
+  padding-left: 0px;
+}
+
+.eventrow_text .left-bar{
+  width:13%;
 }
 
 .rules{
@@ -49,7 +73,7 @@
   height:100%;
 }
 
-.eventrow .subtitle{
+.subtitle{
   padding-top:0px;
   margin-top:0px;
   font-size:15px;
@@ -64,7 +88,8 @@
 }  
 
 
-.eventrow .dateday{
+.dateday{
+  color:white;
   background-color:rgba(56,56,56,0.5);
   float:left;
   border:solid 2px rgba(230,230,230,0.6);
@@ -74,7 +99,7 @@
   text-align:center
 ;}
 
-.eventrow .dateday .date{
+.dateday .date{
   font-size: 20px;
 }
 
@@ -92,7 +117,7 @@
   vertical-align: bottom;
 }
 
-.eventrow .mobile-arrow{
+.mobile-arrow{
   text-align:right;
   margin-top:5px;
   background-color:rgba(56,56,56,0.5);
