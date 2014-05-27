@@ -5,22 +5,33 @@ $( document ).ready(function() {
    		$('#loginModal').show(150);
    	});
 
-      //close the loginform when either one of the close buttons are clicked, or the area outside the form
-      /*
-      $('#loginModal').on('click', function(){
-   		$('#loginModal').hide(150);
-   		console.log('clickie');
-   	});
-      */
-   	//make sure that clicking the form itself won't close it
-   	//$(".modal-dialog").click(function(e) { e.stopPropagation(); });
-
       $('#loginModal').on('click', '.closeform', function(){
          $('#loginModal').hide(150);
          console.log('closing');
       });
 
-      /*---------------------------ACCORDION-----------------------------*/
-      $('.accordion').accordion();
+
+      /*---------------------------DATEPICKER-----------------------------*/
+      $('.datetimefield').datetimepicker({step:15});
+
+      /*---------------------------FACEBOOK EVENT INFO-----------------------------*/
+      $('#fb-event-submit').click(function(){
+         var fb_id = $('#fb-event-id').val();
+         fb_process(fb_id);
+      });
+
+      $('#addrulebtn').click(function(){
+         var rule = $('#addRule').val();
+         var val = $('#addVal').val();
+         $('#addRule').val('');
+         $('#addVal').val('');
+         console.log('adding ' + rule + ', ' + val);
+         addRuleRow(rule, val);
+      });
+
+      $(document).on('click','.deleterulebtn',function(){
+         console.log('deleting');
+         $('.deleterulebtn').parents('.rulerow:last').remove();
+      });
 });
 

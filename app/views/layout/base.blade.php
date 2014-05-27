@@ -5,25 +5,8 @@
 	    {{-- set the page title, if not specified, revert to default --}}
 	    <title>{{ isset($pageTitle) ? $pageTitle : 'AirCentral' }}</title>
 
-	    {{-- Load in twitter bootstrap --}}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	    {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
-		{{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css') }}
-
-	    {{-- load in jquery --}}
-		{{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js') }}
-		{{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
-
-	    {{-- load in fonts --}}
-	    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js') }}
-		{{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans') }}
-
-	    {{-- load in custom css --}}
-	    {{ HTML::style('css/calendarstyle.css') }}
-	    {{ HTML::style('css/style.css') }}
-
-	    {{-- load in custom javascripts --}}
-	    {{ HTML::script('js/ui_config.js') }}
+	    {{-- import all external libraries --}}
+	    @include('layout.elements.imports')
 	</head> 
 	<body  >
         
@@ -39,19 +22,7 @@
 			  <div class="row">
 			    
 			    <div class="col-md-12"> 
-			      
-			      <div class="panel">
-			        <div class="panel-body">
-			        
-			          @yield('content')
-			          
-			        
-			          
-			        </div>
-			      </div>
-			                                                                                       
-				                                                
-			                                                      
+			          @yield('content')                       
 			   	</div><!--/col-12-->
 			  </div>                                    
 			<div id="push"></div>

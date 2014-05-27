@@ -45,11 +45,6 @@
   overflow: scroll;
 }
 
-#banner{
-  min-height:315px;
-  height:315px;
-}
-
 .eventrow h4{
   font-weight:normal;
   font-size:20px;

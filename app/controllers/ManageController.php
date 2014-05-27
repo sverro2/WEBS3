@@ -13,4 +13,10 @@ class ManageController extends BaseController {
 		return View::make('organisation.manage', $data);
 	}
 
+	public function getCreateEvent($organisation_url)
+	{
+		$data['organisation'] = Organisation::where('url', '=', $organisation_url)->firstOrFail();
+		$data['rules'] = Rule::all();
+		return View::make('organisation.event.create', $data);
+	}
 }

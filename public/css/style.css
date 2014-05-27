@@ -153,6 +153,21 @@ a,a:hover {
   color:#fff;
 }
 
+.panel-body{
+  background-color:white;
+}
+
+.nopadding_left{
+  padding-left: 0px;
+}
+
+.nopadding_right{
+  padding-right: 0px;
+}
+
+.rulerow{
+  margin-bottom:10px;
+}
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}

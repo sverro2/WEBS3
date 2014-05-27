@@ -18,4 +18,11 @@ class OrganisationController extends BaseController {
 		return View::make('organisation.event.event', $data);
 	}
 
+
+	public function getFacebookEvent()
+	{
+		$event_id = Input::get('id');
+		$facebook_event = new FacebookEvent($event_id);
+		return Response::json($facebook_event->toArray());
+	}
 }
