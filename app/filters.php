@@ -70,12 +70,19 @@ Route::filter('auth.manages', function($route, $request)
 	{
 		$user = Session::get('user');
 		if($user->isAdmin()){
-			return;
+			return true;
 		}else{
+			$my_organisation = false;
 			foreach($user->organisations as $organisation)
 			{
-				if(!($url === $organisation->url))
-					return Redirect::to('account/login');
+				if($url === $organisation->url)
+				{
+					$my_organisation = true;
+				}
+			}
+			if(!$my_organisation)
+			{
+				return Redirect::to('account/login');
 			}
 		}
 	}else{
