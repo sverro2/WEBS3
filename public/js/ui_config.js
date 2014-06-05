@@ -33,5 +33,14 @@ $( document ).ready(function() {
          console.log('deleting');
          $('.deleterulebtn').parents('.rulerow:last').remove();
       });
+
+      /*---------------------------SLIDE OUT DETAILS-----------------------------*/
+      $('.row-content').click(function(){
+         var parent = $(this).parents('.eventrow_text:last');
+         var child = parent.find('.row-details');
+         console.log(child);
+         child.toggle("blind");
+      });
+
 });
 

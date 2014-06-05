@@ -17,15 +17,25 @@
 }
 
 .eventrow_text{
-  border-bottom:solid 1px rgba(100,100,100,1);
   min-height:0px;
- /*box-shadow: 2px -1px 10px 0 black;*/
+ /*box-shadow: 2px -1px 10px 0 black;
+   border-bottom:solid 1px rgba(100,100,100,1);*/
   margin-top:15px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 
   font-weight: bold;
   background-position:center;
   background-size:cover;
+}
+
+.row-details{
+  border-radius: 15px; 
+  background-color:rgba(56,56,56,0.5);
+  color:white;
+}
+
+.row-details .details{
+  margin:15px;
 }
 
 .eventrow_text h3{
@@ -84,18 +94,22 @@
 
 
 .dateday{
-  color:white;
-  background-color:rgba(56,56,56,0.5);
   float:left;
-  border:solid 2px rgba(230,230,230,0.6);
-  border-radius: 2px;
+  /*border:solid 2px rgba(230,230,230,0.6);
+  border-radius: 2px; 
+  background-color:rgba(56,56,56,0.5);
+  color:white;*/
   padding:5px;
   margin-top:10px;
-  text-align:center
+  text-align:center;
+  width:100%;
+  border-right: 1px solid #c1c1c1;
+  font-size:25px;
 ;}
 
 .dateday .date{
-  font-size: 20px;
+  border-bottom:1px solid #c1c1c1;
+  width:100% !important;
 }
 
 .eventrow .bottom-bar{
