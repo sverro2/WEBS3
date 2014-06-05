@@ -1,7 +1,8 @@
 @extends('layout.base')
 
 @section('content')
-<div class="row eventrow" id="banner" style="background-image:url( {{$event->banner}} )">
+<div class="row eventrow" id="banner">
+  <div class="bg-banner" style="left:{{$event->banner->left}};top:{{$event->banner->top}};background-image:url({{$event->banner->url}})"  ></div>
 	<div class="col-sm-12 row-content">
       <div class="row bar-container">
         <div class="col-xs-10 left-bar">
@@ -50,7 +51,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-7">
+			<div class="col-sm-12">
 				<p>
 					<h4>Informatie:</h4>
 					Begin: {{ $event->getSimpleStart() }}<br/>
@@ -64,18 +65,6 @@
 					@endif
 				</p>
 
-			</div>
-			<div class="col-sm-5">
-				<p>
-					<h4>Regels:</h4>
-					@foreach($event->ruleSet->rules as $rule)
-						{{ $rule->rule }} : {{ $rule->value }} 
-							@if(!is_null($rule->description))
-								<span class="glyphicon glyphicon-comment"></span>
-							@endif
-						<br/>
-					@endforeach
-				</p>
 			</div>
 		</div>
 	</div>

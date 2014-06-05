@@ -36,7 +36,6 @@ function fb_parseDT(datetime)
 	var dateRegExp = /^\d{4}-\d{2}-\d{2}T/;
 	var timeZoneRegExp = /:\d{2}\+\d{4}/;
 	var date = datetime.replace(timeRegExp,'');
-	var date = date.replace(/-/g,'/');
 	var time = datetime.replace(dateRegExp,'');
 	var time = time.replace(timeZoneRegExp,'');
 

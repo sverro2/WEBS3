@@ -1,5 +1,6 @@
 <a href={{ url('organisation/event/' . $event->url) }} class="bannerlink">
-<div class="row eventrow" style="background-image:url( {{ $banner }} )">
+<div class="row eventrow">
+  <div class="bg-banner" style="left:{{$event->banner->left}};top:{{$event->banner->top}};background-image:url({{$event->banner->url}})"  ></div>
     <div class="col-sm-12 row-content">
       <div class="row bar-container">
         <div class="col-xs-10 left-bar">

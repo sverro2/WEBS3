@@ -17,12 +17,14 @@ class FacebookEvent  {
 	{
 		try{
 		$response = $this->facebook->api(
-    		'/' . $this->id
+    		$this->id
 		)['privacy'];
 		if($response === "OPEN")
 			return true;
 		}catch (Exception $e)
 		{
+			Log::info($this->id);
+			Log::info($e);
 			return false;
 		}
 		return false;

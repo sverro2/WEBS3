@@ -20,6 +20,6 @@ class Organisation extends Eloquent {
 
 	public function defaultRules()
 	{
-		return $this->belongsTo('RuleSet');
+		return $this->hasOne('RuleSet');
 	}
 }

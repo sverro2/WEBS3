@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="event-create">
-	<div class="row eventrow" style="background-image:url( {{$organisation->banner}} )">
+	<div class="row eventrow">
+	<div class="bg-banner bg-banner-move" style="background-image:url({{$organisation->banner}})" ></div>
 		<div class="col-sm-12 row-content">
 			<div class="row bar-container">
 			</div>
@@ -37,6 +38,10 @@
 		  </div>
 		</div>
 
+		{{ Form::open(array('url' => 'manage/create-event/milsimsport')) }}
+		{{ Form::hidden('organisation-id', $organisation->id) }}
+		{{ Form::hidden('banner-top', null, array('id'=>'banner-top')) }}
+		{{ Form::hidden('banner-left', null, array('id'=>'banner-left')) }}
 		<div class="panel panel-default create-event-info">
 		  <div class="panel-heading">
 			<h3 class="panel-title">Evenement informatie</h3>
@@ -44,29 +49,32 @@
 		  <div class="panel-body">
 			<div class="input-group input-group-lg">
 				<span class="input-group-addon">Naam</span>
-				<input type="text" class="form-control" placeholder="naam" id="event-name">
+				{{ Form::text('event-name', null, array('placeholder'=>'Naam', 'class'=>'form-control', 'required'=>'')) }}
 			</div>
 			<br/>
 			<div class="col-md-6 nopadding_left">
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">Start</span>
-					<input class="datetimefield form-control" type="text" readonly="readonly" id="event-start">
+				{{ Form::text('event-start', null, array('class'=>'datetimefield form-control', 'required'=>'')) }}
 				</div>
 			</div>
 			<div class="col-md-6 nopadding_right">
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">Eind</span>
-					<input class="datetimefield form-control" type="text" readonly="readonly" id="event-end">
+					{{ Form::text('event-end', null, array('class'=>'datetimefield form-control', 'required'=>'')) }}
 				</div>
 			</div>
 			<br/><br/><br/>
 			<div class="input-group input-group-lg">
 				<span class="input-group-addon">Locatie</span>
-				<select class="form-control" id="event-location">
-					@foreach($organisation->locations as $location)
-						<option value={{$location->url}}>{{$location->name}}</option>
-					@endforeach
-				</select>
+				<?php
+					$select_locations = array();
+					foreach($organisation->locations as $location)
+					{
+						$select_locations[$location->id] = $location->name;
+					}
+				?>
+				{{ Form::select('event-location', $select_locations, null, array('class'=>'form-control')) }}
 			</div>
 			<br/>
 			<textarea class="form-control" id="event-description"></textarea>
@@ -82,30 +90,15 @@
 			<h3 class="panel-title">Reglement</h3>
 		  </div>
 		  <div class="panel-body" id="rulepanel">
-		  	<div id="addedrules">
-		  	</div>
-		  	<div class="row rulerow">
-				<div class="col-md-5">
-					<div class="input-group input-group-lg">
-						<span class="input-group-addon">Regel</span>
-						<input class="form-control rulecomplete" type="text" id="addRule">
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="input-group input-group-lg">
-						<span class="input-group-addon">Waarde</span>
-						<input class="form-control valuecomplete" type="text" id="addVal">
-					</div>
-				</div>
-				<div class="col-md-1">
-					<button type="button" class="btn btn-default btn-lg" id="addrulebtn">
-					  <span class="glyphicon glyphicon-plus"></span>
-					</button>
-				</div>
+	  		<textarea class="form-control" id="event-rules">{{ $organisation->defaultrules->rules}}</textarea>
+			<div class="alert alert-info">
+				In dit veld wordt het standaardreglement van je organisatie automatisch ingeladen.
+				Alle aanpassingen die je maakt in dit veld worden wel voor dit evenement opgeslagen.
 			</div>
-			@include('organisation.event.elements.autocomplete', $rules)
 		  </div>
 		</div>
+		{{ Form::submit('Evenement opslaan', array('class'=>'btn btn-primary btn-lg btn-block')) }}
+		{{ Form::close() }}
 	</div>
 </div>
 

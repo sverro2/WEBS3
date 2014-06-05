@@ -6,8 +6,7 @@ class UserController extends BaseController {
 
 	public function __construct() {
 		parent::__construct();
-		$this->beforeFilter('csrf', array('only' => 'postLogin'));
-		$this->beforeFilter('csrf', array('only' => 'postRegister'));
+		$this->beforeFilter('csrf', array('only' => array('postLogin', 'postRegister')));
 	}
 
 	public function getIndex()

@@ -12,7 +12,12 @@ $( document ).ready(function() {
 
 
       /*---------------------------DATEPICKER-----------------------------*/
-      $('.datetimefield').datetimepicker({step:15});
+      $('.datetimefield').datetimepicker(
+         {
+            step:15,
+            format: 'Y-m-d h:m'
+         }
+      );
 
       /*---------------------------FACEBOOK EVENT INFO-----------------------------*/
       $('#fb-event-submit').click(function(){
@@ -20,18 +25,17 @@ $( document ).ready(function() {
          fb_process(fb_id);
       });
 
-      $('#addrulebtn').click(function(){
-         var rule = $('#addRule').val();
-         var val = $('#addVal').val();
-         $('#addRule').val('');
-         $('#addVal').val('');
-         console.log('adding ' + rule + ', ' + val);
-         addRuleRow(rule, val);
-      });
 
-      $(document).on('click','.deleterulebtn',function(){
-         console.log('deleting');
-         $('.deleterulebtn').parents('.rulerow:last').remove();
+      /*---------------------------DRAGGABLE BANNER-----------------------------*/
+      $('.eventrow .bg-banner-move').draggable({
+         drag: function(event, ui) {
+               var left = $('.eventrow .bg-banner').css('left');
+               var top = $('.eventrow .bg-banner').css('top');
+         $('#banner-top').val(top);
+         $('#banner-left').val(left);
+         },
+         axis: 'y'
+
       });
 });
 

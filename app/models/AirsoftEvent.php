@@ -48,20 +48,25 @@ class AirsoftEvent extends Eloquent {
 		return $this->belongsTo('Type');
 	}
 
+	public function banner()
+	{
+		return $this->belongsTo('Banner');
+	}
+
 	public function ruleset()
 	{
 		return $this->belongsTo('RuleSet');
 	}
-
+	/*
 	public function getBannerAttribute()
 	{
-		if(is_null($this->attributes['banner']))
+		if(is_null($this->attributes['banner_id']))
 		{
 			return $this->location->banner;
 		}
-		return $this->attributes['banner'];
+		return $this->banner;
 	}
-
+	*/
 	public function fb_event()
 	{
 		if(is_null($this->fb_event))
