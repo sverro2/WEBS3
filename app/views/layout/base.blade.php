@@ -8,7 +8,7 @@
 	    {{-- import all external libraries --}}
 	    @include('layout.elements.imports')
 	</head> 
-	<body  >
+	<body>
         
         @include('layout.elements.menu')
         @section('title')
