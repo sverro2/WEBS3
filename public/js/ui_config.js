@@ -37,5 +37,14 @@ $( document ).ready(function() {
          axis: 'y'
 
       });
+
+      /*---------------------------SLIDE OUT DETAILS-----------------------------*/
+      $('.row-content').click(function(){
+         var parent = $(this).parents('.eventrow_text:last');
+         var child = parent.find('.row-details');
+         console.log(child);
+         child.toggle("blind");
+      });
+
 });
 

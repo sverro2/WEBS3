@@ -15,6 +15,22 @@ class AirsoftEvent extends Eloquent {
 		//return 'bar';
 	}
 
+	public function getSimpleStartDay()
+	{
+		setlocale(LC_TIME, 'nld_nld');  
+		$date = Carbon::createFromFormat('Y-m-d H:i:s', $this->start);
+		return $date->formatLocalized('%d');
+		//return 'bar';
+	}
+
+	public function getSimpleStartMonth()
+	{
+		setlocale(LC_TIME, 'nld_nld');  
+		$date = Carbon::createFromFormat('Y-m-d H:i:s', $this->start);
+		return $date->formatLocalized('%B');
+		//return 'bar';
+	}
+
 	public function getDay()
 	{
 		$date = Carbon::createFromFormat('Y-m-d H:i:s', $this->start);
