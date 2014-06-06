@@ -43,6 +43,12 @@ class AirsoftEvent extends Eloquent {
 		return $date->formatLocalized('%A %d %B') . ", " . $date->format('H:i');
 	}
 
+	public function getSimpleStartTime()
+	{
+		$date = Carbon::createFromFormat('Y-m-d H:i:s', $this->start);
+		return $date->format('H:i');
+	}
+
 	public function getSimpleEnd()
 	{
 		$date = Carbon::createFromFormat('Y-m-d H:i:s', $this->end);

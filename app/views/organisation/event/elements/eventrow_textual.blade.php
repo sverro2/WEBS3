@@ -38,7 +38,26 @@
   <div class="row">
     <div class="col-sm-12 row-details" style="display:none">
       <div class="details">
-        {{$event->description}}
+        <p>{{$event->description}}</p>
+        <div class="row">
+          <div class="map col-sm-6" data-location={{$event->location->id}}>
+            <img src={{ 'http://maps.googleapis.com/maps/api/staticmap?center=' . $event->location->coordinates . '&zoom=14&size=380x380&markers=' . $event->location->coordinates }} />
+          </div>
+          <div class="extra_details col-sm-6">
+            <h3>Locatie</h3>
+            {{ $event->location->name }}<br/>
+            {{ $event->location->address }}
+            <br/>
+            <h3>Start</h3>
+            <h4>{{$event->getSimpleStartTime()}}</h4>
+            @if($event->fb_visible())
+              <h3>Facebook</h3>
+              Gaat: {{ $event->fb_event()->attending() }}
+               Misschien: {{ $event->fb_event()->maybe() }}
+               Uitgenodigd: {{ $event->fb_event()->invited() }}
+            @endif
+          </div>
+        </div>
       </div>
     </div>
   </div>

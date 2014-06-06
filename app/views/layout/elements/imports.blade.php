@@ -15,6 +15,9 @@
 {{HTML::style('css/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
 {{HTML::script('js/jquery-ui-1.10.4.custom.min.js')}}
 
+{{-- load in facebook js api --}}
+{{HTML::script('js/facebookapi.js')}}
+
 {{-- load in fonts --}}
 {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js') }}
 {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans') }}

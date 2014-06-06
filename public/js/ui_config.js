@@ -42,8 +42,9 @@ $( document ).ready(function() {
       $('.row-content').click(function(){
          var parent = $(this).parents('.eventrow_text:last');
          var child = parent.find('.row-details');
-         console.log(child);
-         child.toggle("blind");
+         child.slideToggle("blind");
+         var map = child.find('.map');
+         var id = map.data('location');
       });
 
 });

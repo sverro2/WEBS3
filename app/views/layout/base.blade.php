@@ -9,7 +9,7 @@
 	    @include('layout.elements.imports')
 	</head> 
 	<body  >
-        
+        <div id="fb-root"></div>
         @include('layout.elements.menu')
         @section('title')
 		 
