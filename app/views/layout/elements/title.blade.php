@@ -1,24 +1,15 @@
-<div id="masthead">  
-<div class="container">
-<div class="row">
-  <div class="col-md-7">
+<div class="row" id="wrapper">
+  <div class="col-md-3 header">
     <h1>AirCentral
-      <p class="lead">
-      	@section('title_sub') 
-      	Your airsoft homepage 
-      	@show</p>
     </h1>
+    <p id="lead">
+      Your airsoft resource
+    </p>
   </div>
-  <div class="col-md-5">
-    <div class="well well-lg"> 
-      <div class="row">
-        <div class="col-sm-12">
-          @section('title_ad') 
-          Ad Space 
-          @show
-        </div>
-      </div>
+  <div class="col-md-9 header" id="titleright">
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" placeholder="Zoek" id="searchfield">
+      <span class="input-group-addon" id="searchbutton"><span class="glyphicon glyphicon-search"></span></span>
     </div>
   </div>
-</div> 
-</div><!-- /cont -->
+</div>

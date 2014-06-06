@@ -18,12 +18,16 @@ class HomeController extends BaseController {
 	public function __construct() {
 		parent::__construct();
 	}
-
+	/*
 	public function getIndex()
 	{
-		
 		$data['events'] = AirsoftEvent::all();
 		return View::make('home', $data);
 	}
-
+	*/
+	public function getIndex()
+	{
+		$data['events'] = AirsoftEvent::all();
+		return View::make('home', $data);
+	}
 }

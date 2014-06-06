@@ -1,4 +1,25 @@
+
+
+var timer;
+
 $( document ).ready(function() {
+
+   /*---------------------------CASE INSENSITIVE CONTAINS-----------------------------*/
+   $.expr[":"].contains = $.expr.createPseudo(function(arg) {
+       return function( elem ) {
+           return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+       };
+   });
+
+   /*---------------------------TUBULAR BACKGROUND-----------------------------*/
+   //$('#wrap').tubular({videoId: 'CeKSL9l-Ghg', start: 46});
+   $('#yt').mb_YTPlayer(
+      {
+         videoURL:'https://www.youtube.com/watch?v=dWZcJHmoS_k', 
+         mute:true,
+         startAt:15
+      });
+   
    /*---------------------------LOGIN WINDOW-----------------------------*/
 	//show the login form when the sign in button is clicked
    	$('#signin').click(function(){
@@ -45,6 +66,13 @@ $( document ).ready(function() {
          child.slideToggle("blind");
          var map = child.find('.map');
          var id = map.data('location');
+      });
+
+      /*---------------------------LIVE SEARCH-----------------------------*/
+      $("#searchfield").keyup(function(){
+          clearTimeout(timer);
+          var search = function(){livesearch()};
+          timer = setTimeout(search, 500);
       });
 
 });

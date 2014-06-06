@@ -1,0 +1,64 @@
+.inset {
+	font-family: Helvetica, Verdana, Arial, sans-serif;
+	font-size: 14px;
+	list-style-type: none;
+	margin: 10px 0 0 10px;
+}
+
+.inset ul { list-style-type: none; display: block; }
+
+.inset li {
+	float: left;
+	height: 30px;
+	margin: 0 8px 7px 0;
+}
+
+.inset li a {
+	background-color: gray;
+	color: #424242;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	height: 24px;
+	padding-left: 27px;
+	padding-top: 6px;
+	position: relative;
+	text-decoration: none;
+	border: 1px solid #bfc1c6;
+    /* Mozilla browsers that use Gecko layout engine */
+	-moz-border-radius: 5px;
+	/* Safari and Chrome that use WebKit layout engine */
+	-webkit-borer-radius: 5px;
+	/* W3C CSS Level 3.0 specifications. For Opera and IE9 */
+	border-radius: 5px;
+	/* Mozilla browsers that use Gecko layout engine */
+background: -moz-linear-gradient(#a5a7aa, #bec1c5 1%, #d8dbdf 10%, #d8dbdf);
+/* Safari and Chrome that use WebKit layout engine */
+background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #a5a7aa),color-stop(.01, #bec1c5),color-stop(.10, #d8dbdf),color-stop(1, #d8dbdf));
+}
+
+.inset li a:hover {
+	border: 1px solid #b4b7bb;
+	background: -moz-linear-gradient(#9c9fa2, #b4b7bb 1%, #cdd0d5 10%, #cdd0d5);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0, #9c9fa2),color-stop(.01, #b4b7bb),color-stop(.10, #cdd0d5),color-stop(1, #cdd0d5));
+}
+
+.inset li a img {
+	height: 16px;
+	left: 7px;
+	margin-right: 7px;
+	position: absolute;
+	top: 7px;
+	width: 16px;
+	border:none;
+}
+
+.inset li a span {
+	display: block;
+	height: 22px;
+	padding-right: 7px;
+	overflow: hidden;
+	/* width: 70px; Uncomment this to add a fixed width */
+}
+	
+span.site { font-size: 14px; line-height: 20px; }

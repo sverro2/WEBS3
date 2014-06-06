@@ -22,10 +22,11 @@
    border-bottom:solid 1px rgba(100,100,100,1);*/
   margin-top:15px;
   margin-bottom: 20px;
-
+  color:white;
   font-weight: bold;
   background-position:center;
   background-size:cover;
+  background-color:rgba(0,0,0,0.7);
 }
 
 .eventrow_text .map img{
@@ -35,8 +36,9 @@
 }
 
 .row-details .details{
-  border-radius: 15px; 
-  background-color:rgba(56,56,56,0.5);
+  /*border-radius: 15px; 
+  background-color:rgba(56,56,56,0.8);*/
+  border-top:solid 1px white;
   color:white;
   padding:15px;
   font-weight: normal;
@@ -44,6 +46,7 @@
 
 .row-details .details .extra_details{
   text-align:center;
+  height:100%;
 }
 
 .row-details .details{
@@ -93,7 +96,7 @@
   color:#8B3530;
 }
 
-.eventrow a{
+.eventrow_text a{
   color:white;
 }
 
@@ -124,6 +127,7 @@
   color:white;*/
   padding:5px;
   margin-top:10px;
+  margin-bottom:10px;
   text-align:center;
   width:100%;
   border-right: 1px solid #c1c1c1;

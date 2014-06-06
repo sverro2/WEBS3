@@ -8,15 +8,18 @@
 {{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
 
 {{-- jquery datetimepicker plugin --}}
-{{HTML::style('css/jquery.datetimepicker.css')}}
-{{HTML::script('js/jquery.datetimepicker.js')}}
+{{ HTML::style('css/jquery.datetimepicker.css') }}
+{{ HTML::script('js/jquery.datetimepicker.js') }}
 
 {{-- this jquery needs some ui, let's load it in --}}
-{{HTML::style('css/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
-{{HTML::script('js/jquery-ui-1.10.4.custom.min.js')}}
+{{ HTML::style('css/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
+{{ HTML::script('js/jquery-ui-1.10.4.custom.min.js')}}
 
 {{-- load in facebook js api --}}
-{{HTML::script('js/facebookapi.js')}}
+{{ HTML::script('js/facebookapi.js') }}
+
+{{-- load in background video api --}}
+{{ HTML::script('js/jquery.mb.YTPlayer.js') }}
 
 {{-- load in fonts --}}
 {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js') }}
@@ -29,3 +32,4 @@
 {{-- load in custom javascripts --}}
 {{ HTML::script('js/ui_config.js') }}
 {{ HTML::script('js/event.js') }}
+{{ HTML::script('js/search.js') }}

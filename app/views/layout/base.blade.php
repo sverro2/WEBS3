@@ -8,21 +8,19 @@
 	    {{-- import all external libraries --}}
 	    @include('layout.elements.imports')
 	</head> 
-	<body  >
+	<body>
         <div id="fb-root"></div>
-        @include('layout.elements.menu')
-        @section('title')
-		 
-		</div>
+        <div id="yt"></div>
 
 		@section('container')
 
 		<div id="wrap">
-			<div class="container" id="content">
+			<div class="container">
 			  <div class="row">
 			    
-			    <div class="col-md-12"> 
-			          @yield('content')                       
+			    <div class="col-md-12" id="content"> 
+    				@include('layout.elements.title')
+		          	@yield('content')                       
 			   	</div><!--/col-12-->
 			  </div>                                    
 			<div id="push"></div>
@@ -31,7 +29,7 @@
 			@include('account.elements.login')       
 		</div>  
 		<footer>
-		  <div class="container">
+		  <div class="container" id="footer">
 		    <div class="row">
 		      <div class="col-sm-6">
 		        <ul class="list-inline">
