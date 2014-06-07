@@ -40,8 +40,8 @@
       <div class="details">
         <p>{{$event->description}}</p>
         <div class="row">
-          <div class="map col-sm-4" data-location={{$event->location->id}}>
-            <img src={{ 'http://maps.googleapis.com/maps/api/staticmap?center=' . $event->location->coordinates . '&zoom=14&size=380x380&markers=' . $event->location->coordinates }} />
+          <div class="map col-sm-4" data-location={{$event->location->id}} data-latlng={{$event->location->coordinates}}>
+            <img src={{ 'http://maps.googleapis.com/maps/api/staticmap?center=' . $event->location->coordinates . '&zoom=14&size=380x380&markers=' . $event->location->coordinates }} class="minimap"/>
           </div>
           <div class="extra_details col-sm-4 borderright">
             <h3>Locatie</h3>

@@ -13,8 +13,8 @@
         <div id="yt"></div>
 
 		@section('container')
-
-		<div id="wrap">
+		@include('layout.elements.map')
+		<div id="wrap" class="slideleft">
 			<div class="container">
 			  <div class="row">
 			    
@@ -28,7 +28,7 @@
 			@show  
 			@include('account.elements.login')       
 		</div>  
-		<footer>
+		<footer class="slideleft">
 		  <div class="container" id="footer">
 		    <div class="row">
 		      <div class="col-sm-6">
@@ -48,7 +48,6 @@
 		    </div>
 		  </div>
 		</footer>
-        
         
     </body>
 </html>

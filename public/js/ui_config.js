@@ -1,5 +1,4 @@
-
-
+var map;
 var timer;
 
 $( document ).ready(function() {
@@ -75,5 +74,19 @@ $( document ).ready(function() {
           timer = setTimeout(search, 500);
       });
 
+      /*---------------------------MAP MOVEMENT-----------------------------*/
+      $('.map').click(function(){
+        var minimap = $(this);
+        var latlng = minimap.data('latlng');
+        $('.slideleft').hide('slide',function(){
+          $('#map-canvas').show('slide', {direction: 'right'}, function(){
+            var lat = latlng.replace(/\s*\,.*/, ''); // first 123
+            var lng = latlng.replace(/.*,\s*/, ''); // second ,456
+            map.setCenter(new google.maps.LatLng(lat, lng));
+            map.setZoom(16);
+            google.maps.event.trigger(map, 'resize');
+          });
+        });
+      });
 });
 

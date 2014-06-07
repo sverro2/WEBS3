@@ -21,6 +21,9 @@
 {{-- load in background video api --}}
 {{ HTML::script('js/jquery.mb.YTPlayer.js') }}
 
+{{-- load in maps api --}}
+{{ HTML::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyASxxSOwR_whPmUsMeN_kcJrCDhjzMAxy0') }}
+
 {{-- load in fonts --}}
 {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js') }}
 {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans') }}
@@ -33,3 +36,4 @@
 {{ HTML::script('js/ui_config.js') }}
 {{ HTML::script('js/event.js') }}
 {{ HTML::script('js/search.js') }}
+{{ HTML::script('js/map_config.js') }}

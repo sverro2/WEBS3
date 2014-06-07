@@ -64,6 +64,10 @@
   color:gray;
 }
 
+.minimap:hover{
+  cursor: pointer;
+}
+
 .eventrow_text h3{
   margin-top:10px;
   margin-bottom:0px;
