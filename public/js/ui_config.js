@@ -79,7 +79,7 @@ $( document ).ready(function() {
         var minimap = $(this);
         var latlng = minimap.data('latlng');
         $('.slideleft').hide('slide',function(){
-          $('#map-canvas').show('slide', {direction: 'right'}, function(){
+          $('#map-wrapper').show('slide', {direction: 'right'}, function(){
             var lat = latlng.replace(/\s*\,.*/, ''); // first 123
             var lng = latlng.replace(/.*,\s*/, ''); // second ,456
             map.setCenter(new google.maps.LatLng(lat, lng));

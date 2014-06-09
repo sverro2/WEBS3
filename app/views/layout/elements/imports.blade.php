@@ -30,6 +30,7 @@
 
 {{-- load in custom css --}}
 {{ HTML::style('css/calendarstyle.css') }}
+{{ HTML::style('css/mapstyle.css') }}
 {{ HTML::style('css/style.css') }}
 
 {{-- load in custom javascripts --}}

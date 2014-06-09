@@ -15,14 +15,6 @@ body {
   height:100%;
 }
 
-#map-canvas{
-  height:100%;
-  width:100%;
-  top:0;
-  left:0;
-  display:none;
-}
-
 footer{
   margin-bottom:30px;
 }
