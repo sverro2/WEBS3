@@ -17,7 +17,6 @@ class UserController extends BaseController {
 
 	public function getLogin()
 	{
-		return "hi";
 		return View::make('account.login');
 	}
 
@@ -100,6 +99,14 @@ class UserController extends BaseController {
 
 		$user->save();
 		return Redirect::to('/');
+	}
+
+	protected function getRegisterValidator()
+	{
+	return Validator::make(Input::all(), [
+	  "username" => "required",
+	  "password" => "required"
+	]);
 	}
 
 	public function getLogout(){
