@@ -75,6 +75,7 @@ $( document ).ready(function() {
 
       /*---------------------------MAP MOVEMENT-----------------------------*/
       $('.map').click(function(){movement_openmap($(this))});
-      $('#closemap').click(function(){movement_closemap()});
+      $('#sidebar-content').on('click', '.closemap', function(){movement_closemap()});
+      $('#adress_submit').click(function(){changeAddress()});
 });
 

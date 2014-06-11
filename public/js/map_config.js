@@ -1,5 +1,6 @@
 var map;
 var userpos;
+var currentDestination;
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var rendererOptions = {
@@ -17,6 +18,7 @@ function movement_openmap(minimap){
 	    //map.setCenter(latlng);
 	    //map.setZoom(16);
 	    google.maps.event.trigger(map, 'resize');
+	    currentDestination = latlng;
 		calcRoute(latlng);
 	  });
 	});
@@ -25,6 +27,7 @@ function movement_openmap(minimap){
 function movement_closemap(){
 	$('#map-wrapper').hide('slide', {direction: 'right'},function(){
 	  $('.slideleft').show('slide');
+
 	});
 }
 
@@ -32,7 +35,7 @@ function movement_closemap(){
 function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8
+          zoom: 10
         };
         map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
@@ -66,7 +69,7 @@ function loadMarkers(){
 }
 
 function load_mapoverlay_location(event){
-	$('#sidebar-content').load('index.php/organisation/event-overlay/' + event);
+	$('#details_filler').load('index.php/organisation/event-overlay/' + event);
 }
 
 function latlng_convert(latlng){
@@ -114,7 +117,7 @@ function computeTotalDistance(result) {
     total += myroute.legs[i].distance.value;
   }
   total = total / 1000.
-  document.getElementById("total").innerHTML = total + " km";
+  $('#estimatedDist').html(total + " km");
 }
 
 function centerRoute(latlng){
@@ -123,4 +126,25 @@ function centerRoute(latlng){
    	latlngbounds.extend(userpos);
 	map.setCenter(latlngbounds.getCenter());
 	map.fitBounds(latlngbounds); 
+}
+
+/*---------------------------GEOCODE-----------------------------*/
+function changeAddress(){
+	var address = $('#adress_input').val();
+	var geo = new google.maps.Geocoder;
+
+	geo.geocode({'address':address},function(results, status){
+	      if (status == google.maps.GeocoderStatus.OK) {
+	        latlong = results[0].geometry.location;
+			userpos = latlong;
+			console.log('coords' + userpos);
+			console.log('coords' + currentDestination);
+			calcRoute(currentDestination);
+			computeTotalDistance(directionsDisplay.directions);
+		  	directionsDisplay.setMap(map);
+		  	directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+	      } else {
+	        console.log("Geocode was not successful for the following reason: " + status);
+	      }
+	});
 }
