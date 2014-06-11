@@ -6,7 +6,6 @@ function livesearch()
 		var row = $(this);
 		var hasVal = false;
 		var searchString = 'div:contains(' + value + ')';
-		console.log(searchString);
 		row.children(searchString).each(function(){hasVal = true;});
 		if(!hasVal){
 				row.hide("slide",{axis:'x'});

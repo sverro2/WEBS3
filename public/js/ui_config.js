@@ -1,4 +1,3 @@
-var map;
 var timer;
 
 $( document ).ready(function() {
@@ -12,13 +11,14 @@ $( document ).ready(function() {
 
    /*---------------------------TUBULAR BACKGROUND-----------------------------*/
    //$('#wrap').tubular({videoId: 'CeKSL9l-Ghg', start: 46});
+   /*
    $('#yt').mb_YTPlayer(
       {
          videoURL:'https://www.youtube.com/watch?v=dWZcJHmoS_k', 
          mute:true,
          startAt:15
       });
-   
+   */
    /*---------------------------LOGIN WINDOW-----------------------------*/
 	//show the login form when the sign in button is clicked
    	$('#signin').click(function(){
@@ -27,7 +27,6 @@ $( document ).ready(function() {
 
       $('#loginModal').on('click', '.closeform', function(){
          $('#loginModal').hide(150);
-         console.log('closing');
       });
 
 
@@ -75,18 +74,7 @@ $( document ).ready(function() {
       });
 
       /*---------------------------MAP MOVEMENT-----------------------------*/
-      $('.map').click(function(){
-        var minimap = $(this);
-        var latlng = minimap.data('latlng');
-        $('.slideleft').hide('slide',function(){
-          $('#map-wrapper').show('slide', {direction: 'right'}, function(){
-            var lat = latlng.replace(/\s*\,.*/, ''); // first 123
-            var lng = latlng.replace(/.*,\s*/, ''); // second ,456
-            map.setCenter(new google.maps.LatLng(lat, lng));
-            map.setZoom(16);
-            google.maps.event.trigger(map, 'resize');
-          });
-        });
-      });
+      $('.map').click(function(){movement_openmap($(this))});
+      $('#closemap').click(function(){movement_closemap()});
 });
 

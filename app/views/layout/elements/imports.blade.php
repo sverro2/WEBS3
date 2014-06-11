@@ -23,6 +23,7 @@
 
 {{-- load in maps api --}}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyASxxSOwR_whPmUsMeN_kcJrCDhjzMAxy0') }}
+{{ HTML::script('https://www.google.com/jsapi') }}
 
 {{-- load in fonts --}}
 {{ HTML::script('//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js') }}

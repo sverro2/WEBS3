@@ -1,7 +1,6 @@
 function fb_process(fb_id)
 {
 	$.get("../../organisation/facebook-event", {id : fb_id}, function( data ) {
-		console.log(data);
 		var vis = data.visible;
 		if(vis)
 		{

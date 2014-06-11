@@ -3,8 +3,46 @@
   width:100%;
   top:0;
   left:0;
+  overflow:hidden;
+}
+
+#map-canvas{
+	position:relative;
+	z-index:1;
+	width:150%;
+	left:-50%;
 }
 
 #map-wrapper{
 	display:none;
+	padding:0px;
+}
+
+#map-wrapper #overlayrow{
+	height:100%;
+	width:100%;
+	position:absolute;
+	z-index:2;
+	left:0;
+	top:0;
+	margin:0px;
+	padding:0px;
+}
+
+#map-wrapper #sidebar{
+	background-color:rgba(0,0,0,0.7);
+	top:50%;
+	padding:15px;
+}
+
+#sidebar-content{
+	height:100%;
+	color:white;
+}
+
+#overlayrow a{
+	color:white;
+}
+
+.backbutton{
 }

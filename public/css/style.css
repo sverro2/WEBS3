@@ -191,6 +191,21 @@ a,a:hover {
 .borderright{
   border-right:solid 1px white;
 }
+
+.border-bottom{
+  border-bottom: solid 1px white;
+  width:100%;
+}
+
+.clicktrough{
+  pointer-events:none;
+}
+
+.clickon{
+  pointer-events:auto;
+}
+
+.absolute
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}
