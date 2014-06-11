@@ -85,6 +85,15 @@ footer{
   border-radius:2px;
   border:solid 1px rgba(100,100,100,1);
 }
+
+#raster {
+  width: 100%;
+  height: 100%;
+  background-size: 4px 4px;
+  position: fixed;
+  background-image: url('../images/raster2.png');
+  background-repeat: 1;
+}
 #masthead {
   min-height:199px;
 }

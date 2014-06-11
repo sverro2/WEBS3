@@ -10,9 +10,8 @@
 	</head> 
 	<body>
         <div id="fb-root"></div>
-        <div id="yt"></div>
 
-		@section('container')
+		@yield('bodycontent')
 		@include('layout.elements.map')
 		<div id="wrap" class="slideleft">
 			<div class="container">

@@ -11,14 +11,14 @@ $( document ).ready(function() {
 
    /*---------------------------TUBULAR BACKGROUND-----------------------------*/
    //$('#wrap').tubular({videoId: 'CeKSL9l-Ghg', start: 46});
-   /*
+   
    $('#yt').mb_YTPlayer(
       {
          videoURL:'https://www.youtube.com/watch?v=dWZcJHmoS_k', 
          mute:true,
          startAt:15
       });
-   */
+   
    /*---------------------------LOGIN WINDOW-----------------------------*/
 	//show the login form when the sign in button is clicked
    	$('#signin').click(function(){
