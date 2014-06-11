@@ -31,9 +31,19 @@ class OrganisationController extends BaseController {
 		return Response::json($facebook_event->toArray());
 	}
 
+	public function getEventLocation()
+	{
+		$event_id = Input::get('id');
+		$event = AirsoftEvent::where('id', '=', $event_id)->firstOrFail();
+		$coords = array($event->location->coordinates);
+		return Response::json($coords);
+	}
+
 	public function getAllLocations()
 	{
 		$data = Location::all();
 		return Response::json($data);
 	}
+
+
 }

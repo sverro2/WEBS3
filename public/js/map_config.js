@@ -16,17 +16,34 @@ function movement_openmap(minimap){
 	$('.slideleft').hide('slide',function(){
 	  $('#map-wrapper').show('slide', {direction: 'right'}, function(){
 	    //map.setCenter(latlng);
-	    //map.setZoom(16);
 	    google.maps.event.trigger(map, 'resize');
 	    currentDestination = latlng;
 		calcRoute(latlng);
+	    map.setZoom(10);
 	  });
+	});
+}
+
+function movement_openmap_quick(event_id){
+	$.get("index.php/organisation/event-location", {id : event_id}, function( data ) {
+		var latlong = latlng_convert(data[0]);
+		load_mapoverlay_location(event_id);
+		$('.slideleft').hide(function(){
+		  $('#map-wrapper').show(function(){
+		    //map.setCenter(latlng);
+		    google.maps.event.trigger(map, 'resize');
+		    currentDestination = latlong;
+			calcRoute(latlong);
+		    map.setZoom(10);
+		  });
+		});
 	});
 }
 
 function movement_closemap(){
 	$('#map-wrapper').hide('slide', {direction: 'right'},function(){
 	  $('.slideleft').show('slide');
+	  $('#details_filler').empty();
 
 	});
 }
@@ -58,7 +75,6 @@ function loadMarkers(){
 		for(i = 0; i < response.length; i++)
 		{
 			var location = response[i];
-			console.log(location);
 			var marker = new google.maps.Marker({
 				position: latlng_convert(location.coordinates),
 				map: map,
@@ -107,7 +123,7 @@ function calcRoute(destination) {
       directionsDisplay.setDirections(response);
     }
   });
-centerRoute(destination);
+//centerRoute(destination);
 }
 
 function computeTotalDistance(result) {
@@ -129,22 +145,31 @@ function centerRoute(latlng){
 }
 
 /*---------------------------GEOCODE-----------------------------*/
-function changeAddress(){
-	var address = $('#adress_input').val();
+function changeAddress(address){
+	if(address==null){
+		address = $('#adress_input').val();
+	}
+	console.log(address);
 	var geo = new google.maps.Geocoder;
 
 	geo.geocode({'address':address},function(results, status){
 	      if (status == google.maps.GeocoderStatus.OK) {
 	        latlong = results[0].geometry.location;
 			userpos = latlong;
-			console.log('coords' + userpos);
-			console.log('coords' + currentDestination);
 			calcRoute(currentDestination);
 			computeTotalDistance(directionsDisplay.directions);
 		  	directionsDisplay.setMap(map);
 		  	directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+		  	if(window.location.hash) {
+		  		var hash = window.location.hash;
+		  		window.location.hash = hash + "&userpos=" + address;
+		  	}
 	      } else {
 	        console.log("Geocode was not successful for the following reason: " + status);
 	      }
 	});
+}
+
+function set_userpos(value){
+	changeAddress(value);
 }
