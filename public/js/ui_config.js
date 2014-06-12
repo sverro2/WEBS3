@@ -14,7 +14,7 @@ $( document ).ready(function() {
    
    $('#yt').mb_YTPlayer(
       {
-         videoURL:'https://www.youtube.com/watch?v=dWZcJHmoS_k', 
+         videoURL:returnYoutubeURL(), 
          mute:true,
          startAt:15
       });
@@ -80,6 +80,11 @@ $( document ).ready(function() {
 
       route();
 });
+
+function returnYoutubeURL(){
+   var url = $('#yt').data('url');
+   return url;
+}
 
 function route(){
   if(window.location.hash) {
