@@ -10,14 +10,12 @@
   <div class="col-md-9" id="titleright">
     <div class="input-group input-group-lg">
 
-
-
-            <input type="text" class="form-control" placeholder="Zoek" id="searchfield">
+         <input type="text" class="form-control" placeholder="Zoek" id="searchfield">
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
 
-          </div>
+    </div>
   </div>
 
 </div>
