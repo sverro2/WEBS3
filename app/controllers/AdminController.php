@@ -12,4 +12,8 @@ class AdminController extends BaseController {
 		return View::make('admin.home');
 	}
 
+	public function getBootstrap(){
+		return View::make('admin.bootstrap');
+	}
+
 }

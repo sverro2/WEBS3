@@ -1,6 +1,7 @@
 {{-- Load in twitter bootstrap --}}
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-{{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
+{{-- HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') --}}
+{{ HTML::style('css/bootstrap.min.css') }}
 {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css') }}
 
 {{-- load in jquery --}}
