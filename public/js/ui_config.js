@@ -75,6 +75,29 @@ $( document ).ready(function() {
 
       /*---------------------------MAP MOVEMENT-----------------------------*/
       $('.map').click(function(){movement_openmap($(this))});
-      $('#closemap').click(function(){movement_closemap()});
+      $('#sidebar-content').on('click', '.closemap', function(){movement_closemap()});
+      $('#adress_submit').click(function(){changeAddress()});
+
+      route();
 });
 
+function route(){
+  if(window.location.hash) {
+    var hash = window.location.hash.substring(1);
+    var hashElements = hash.split('&');
+    for (var i = hashElements.length - 1; i >= 0; i--) {
+      var split = hashElements[i].split('=');
+      for (var i2 = split.length - 1; i2 >= 0; i2--) {
+        var value = split[i2+1];
+        var element = split[i2];
+        if(element=="userpos"){
+          set_userpos(value);
+        }
+        else if(element=="displaymap"){
+          movement_openmap_quick(value);
+        }
+      };
+    };
+    
+  }
+}

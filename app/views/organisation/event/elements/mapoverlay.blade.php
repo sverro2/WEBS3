@@ -1,14 +1,15 @@
-<div class="row clickon">
+<div class="row">
 	<div class="col-sm-12">
 		<div class="row">
 			<div class="col-sm-12">
+				<a href="#" class="closemap">
+					<span class="glyphicon glyphicon-chevron-left backbutton clickon"></span>
+				</a>
 				<h1>{{$event->location->name}}</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
 				{{ $event->location->name }}<br/>
             	{{ $event->location->address }}<br/>
+            	Geschatte afstand: <span id="estimatedDist"></span><br/>
+            	<div class="alert alert-info">De schatting van de afstand is gebaseerd op een schatting van jouw locatie gemaakt door Google, hierdoor kan de afstand soms verschillen van de echte afstand. Het wordt aangeraden na te kijken of uw locatie klopt, en wanneer nodig hem aan te passen.</div>
 			</div>
 		</div>
 		<div class="row">
