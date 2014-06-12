@@ -12,6 +12,10 @@
 {{ HTML::style('css/jquery.datetimepicker.css') }}
 {{ HTML::script('js/jquery.datetimepicker.js') }}
 
+{{-- jquery datatable --}}
+{{ HTML::style('css/jquery.dataTables.css') }}
+{{ HTML::script('js/jquery.dataTables.js') }}
+
 {{-- this jquery needs some ui, let's load it in --}}
 {{ HTML::style('css/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
 {{ HTML::script('js/jquery-ui-1.10.4.custom.min.js')}}

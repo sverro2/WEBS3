@@ -10,7 +10,7 @@
     <hr>
     
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
+      <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-flash"></i> Alerts</a></li>
       <li><a href="#"><i class="glyphicon glyphicon-link"></i> Links</a></li>
       <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
       <li><a href="#"><i class="glyphicon glyphicon-book"></i> Books</a></li>

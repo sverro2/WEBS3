@@ -16,4 +16,16 @@ class AdminController extends BaseController {
 		return View::make('admin.bootstrap');
 	}
 
+	public function getOrganisation(){
+		return View::make('admin.organisation');
+	}
+
+	public function getEvent(){
+		return View::make('admin.events');
+	}
+
+	public function getSetting(){
+		return View::make('admin.settings');
+	}
+
 }
