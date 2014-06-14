@@ -13,6 +13,7 @@ class DataTable{
 
 	'{sub/index/functions()}'										//It is possible to use a tree structure and call functions
 	'{more} and more {data}{fields}'								//You can mix text and multiple datafields
+	'{data},,0>Vol|1>Open'											//The input can be changed to something else with the enum option (third parameter). Split with a |
 	*/
 	
 	//create table canvas
@@ -58,15 +59,25 @@ class DataTable{
 		$amount_of_rows = sizeof($data);
 		$markup = DataTable::read_markup($table_markup);
 
-
 		$content[] = "<tbody>";
 
 		for($rownr = 0; $rownr < $amount_of_rows; $rownr++){
 			$content[] = "<tr>";
 			foreach ($markup as $value) {
 
+				//get data from database
 				$field_value = DataTable::get_data($data, $rownr, $value['words']);
 
+				//replace data when required
+				if(isset($value['enum'])){
+					foreach ($value['enum'] as $original => $replacement) {
+						foreach ($field_value as $key => $input) {
+							$field_value[$key] = str_replace($original, $replacement, $input);
+						}
+					}
+				}
+
+				//add it to the table
 				if(!in_array("", $field_value)){
 					$content[] = "<td>";
 
@@ -91,6 +102,7 @@ class DataTable{
 		return implode($content);
 	}
 
+	//read data from the database
 	static private function get_data(&$data, $row, $replacement){
 		$input = array();
 		foreach ($replacement as $replace) {
@@ -114,6 +126,7 @@ class DataTable{
 		return $input;
 	}
 
+	//needed to support a tree hierarchy
 	static private function get_array_sliced($indexes, $arrayToAccess)
 		{
 	   	if(count($indexes) > 1) 
@@ -122,23 +135,34 @@ class DataTable{
 	   		return $arrayToAccess[$indexes[0]];
 	}
 
+	//analyse the table markup array you sent to this class
 	static private function read_markup(&$table_markup){
 
 		$markup = array();
 
-		foreach ($table_markup as $key => $value) {
+		foreach ($table_markup as $value) {
 			$this_column = array();
 			$markup_base = explode(",", $value);
 			$markup_base[0] = DataTable::replace_hash_with_host($markup_base[0]);
 			$replace = DataTable::replacement_regex($markup_base[0]);
 
-			if (sizeof($markup_base) > 1){
+			if (sizeof($markup_base) > 1 && $markup_base[1] !== ""){
 				$text = "<a href='$markup_base[0]'>$markup_base[1]</a>";
 			}else{
 				$text = $markup_base[0];
 			}
 
-			$markup[] = array('text' => $text, 'words' => $replace);
+			if(isset($markup_base[2])){
+				$enum = array();
+				$sets = explode("|", $markup_base[2]);
+
+				foreach ($sets as $set) {
+					$values = explode(">", $set);
+					$enum[$values[0]] = $values[1];
+				}
+			}
+
+			$markup[] = array('text' => $text, 'words' => $replace, 'enum' => @$enum);
 
 		}
 
@@ -146,6 +170,7 @@ class DataTable{
 
 	}
 
+	//scan for {data} objects to replace
 	static private function replacement_regex(&$input_string){
 		preg_match_all('/{(.*?)}/', $input_string, $matches);
 		$input_string = preg_replace('/{(.*?)}/', "{}", $input_string);
@@ -153,6 +178,7 @@ class DataTable{
 		return $matches[1];
 	}
 
+	//# will be automatically translated to the host the website is running on
 	static private function replace_hash_with_host($input_string){
 		return str_replace("#", "http://" . $_SERVER['SERVER_NAME'] . "/", $input_string);
 	}

@@ -36,10 +36,11 @@ class AdminController extends BaseController {
 			"Event" => "{name}",
 			"Start" => "{getSimpleStartDate()}",
 			"Organisatie" => "{organisation/name}",
-			"Edit" => "#event/edit/{url},Bewerk"
+			"Edit" => "#event/edit/{url},Bewerk",
+			"Vol" => "{is_full},,0>Vrij|1>Vol"
 			);
 
-		$data['data_table'] = DataTable::create_data_table($input, $table_content, "organisation_table");
+		$data['data_table'] = DataTable::create_data_table($input, $table_content, "event_table");
 
 		return View::make('admin.events', $data);
 	}
