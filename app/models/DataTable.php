@@ -85,17 +85,32 @@ class DataTable{
 	static private function get_data(&$data, $row, $replacement){
 		$input = array();
 		foreach ($replacement as $replace) {
+			$array_path = explode("/", $replace);
+			$current_row = $data[$row];
+
+			if(sizeof($array_path) > 1){
+				$replace = array_pop($array_path);
+				$current_row = DataTable::get_array_sliced($array_path, $current_row);
+			}
 
 			if(strpos($replace, "()")){
 				$replace = str_replace("()", "", $replace);
-				$input[] = $data[$row]->{$replace}();
+				$input[] = $current_row->{$replace}();
 				continue;
 			}
 
-			$input[] = $data[$row]->$replace;
+			$input[] = $current_row->$replace;
 		}
 
 		return $input;
+	}
+
+	static private function get_array_sliced($indexes, $arrayToAccess)
+		{
+	   	if(count($indexes) > 1) 
+	    	return DataTable::get_array_sliced(array_slice($indexes, 1), $arrayToAccess[$indexes[0]]);
+	   	else
+	   		return $arrayToAccess[$indexes[0]];
 	}
 
 	static private function read_markup(&$table_markup){

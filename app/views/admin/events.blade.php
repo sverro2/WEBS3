@@ -2,6 +2,5 @@
 
 @section('admincontent')
 
-
     {{ $data_table }}
 @stop

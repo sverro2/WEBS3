@@ -35,6 +35,7 @@ class AdminController extends BaseController {
 		$table_content = array(
 			"Event" => "{name}",
 			"Start" => "{getSimpleStartDate()}",
+			"Organisatie" => "{organisation/name}",
 			"Edit" => "#event/edit/{url},Bewerk"
 			);
 
