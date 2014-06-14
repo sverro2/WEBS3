@@ -11,9 +11,6 @@
 |
 */
 
-//Route::get('/', 'HomeController@getIndex');
-
-Route::get('/', 'HomeController@getIndex');
 
 Route::controller('account', 'UserController');
 
@@ -29,3 +26,4 @@ Route::get('reset', function(){
 	Session::flush();
 });
 
+Route::get('/', 'HomeController@getIndex');

@@ -17,11 +17,30 @@ class AdminController extends BaseController {
 	}
 
 	public function getOrganisation(){
-		return View::make('admin.organisation');
+		$input = Organisation::All();
+		$table_content = array(
+			'Organisatie' => '{name}',
+			'Facebook' => '{facebook},Open',
+			'Website' => '{website},Website',
+			'Events' => '#organisation/index/{name},Show Events'
+			);
+
+		$data['data_table'] = DataTable::create_data_table($input, $table_content, "organisation_table");
+
+		return View::make('admin.organisation', $data);
 	}
 
 	public function getEvent(){
-		return View::make('admin.events');
+		$input = AirsoftEvent::All();
+		$table_content = array(
+			"Event" => "{name}",
+			"Start" => "{getSimpleStartDate()}",
+			"Edit" => "#event/edit/{url},Bewerk"
+			);
+
+		$data['data_table'] = DataTable::create_data_table($input, $table_content, "organisation_table");
+
+		return View::make('admin.events', $data);
 	}
 
 	public function getSetting(){
