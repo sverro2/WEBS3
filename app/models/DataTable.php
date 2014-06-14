@@ -57,7 +57,6 @@ class DataTable{
 		$content = array();
 		$amount_of_rows = sizeof($data);
 		$markup = DataTable::read_markup($table_markup);
-		var_dump($markup);
 
 
 		$content[] = "<tbody>";
@@ -67,7 +66,6 @@ class DataTable{
 			foreach ($markup as $value) {
 
 				$field_value = DataTable::get_data($data, $rownr, $value['words']);
-				var_dump($field_value);
 
 				if(!in_array("", $field_value)){
 					$content[] = "<td>";
