@@ -10,6 +10,9 @@ class DataTable{
 			'Website' => '{website},Website',						//shows "Website", linking to the url saved in the database
 			'Events' => '#organisation/index/{name},Show Events'	//concatinates a LOCAL url (# to use local urls) with the name of the organisation 
 			);
+
+	'{sub/index/functions()}'										//It is possible to use a tree structure and call functions
+	'{more} and more {data}{fields}'								//You can mix text and multiple datafields
 	*/
 	
 	//create table canvas
@@ -54,6 +57,7 @@ class DataTable{
 		$content = array();
 		$amount_of_rows = sizeof($data);
 		$markup = DataTable::read_markup($table_markup);
+		var_dump($markup);
 
 
 		$content[] = "<tbody>";
@@ -63,10 +67,17 @@ class DataTable{
 			foreach ($markup as $value) {
 
 				$field_value = DataTable::get_data($data, $rownr, $value['words']);
+				var_dump($field_value);
 
 				if(!in_array("", $field_value)){
 					$content[] = "<td>";
-					$content[] = str_replace("{}", $field_value[0], $value['text']);
+
+					foreach ($field_value as $replace) {
+						$pos = strpos($value['text'], '{}');
+						$value['text'] = substr_replace($value['text'],$replace,$pos,strlen("{}"));
+					}
+
+					$content[] = $value['text'];
 					$content[] = "</td>";
 				}else{
 					//what to do when a field does require a link, but the database does not delever one?
@@ -138,8 +149,8 @@ class DataTable{
 	}
 
 	static private function replacement_regex(&$input_string){
-		preg_match_all('/{(.*)}/i', $input_string, $matches);
-		$input_string = preg_replace('/{(.*)}/i', "{}", $input_string);
+		preg_match_all('/{(.*?)}/', $input_string, $matches);
+		$input_string = preg_replace('/{(.*?)}/', "{}", $input_string);
 
 		return $matches[1];
 	}
