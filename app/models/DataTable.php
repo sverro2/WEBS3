@@ -3,20 +3,28 @@
 class DataTable{
 
 	/*
-	Example tableMarkup:
 	$table_markup = array(
-			'Organisatie' => '{name}',								//shows the name of the organisation as text
-			'Facebook' => '{facebook},Open',						//shows a link with the text "Open" linking to the url saved in the database
-			'Website' => '{website},Website',						//shows "Website", linking to the url saved in the database
-			'Events' => '#organisation/index/{name},Show Events'	//concatinates a LOCAL url (# to use local urls) with the name of the organisation 
-			);
+		//the syntax of the array:
 
-	'{sub/index/functions()}'										//It is possible to use a tree structure and call functions
-	'{more} and more {data}{fields}'								//You can mix text and multiple datafields
-	'{data},,0>Vol|1>Open'											//The input can be changed to something else with the enum option (third parameter). Split with a |
+		'column_name' => 'Viewable text,link href,enum(search and replace)'					//after comma's no space!
+
+		Viewable text / href syntax:
+		'Plane text {database/function()} - {other/var} - {var}'							//it is possible to mix text and database values
+
+		href:
+		Same as above, but when using # the current hostname is return (for local pages)
+
+		Enum:
+		'database_value1>replacement1|database_value1>replacement1'
+
+		Examples:
+		'Name' => '{name}'																	//just returns the name value
+		'Watch' => 'Goto {organisation/name} {getDate()},#{website}'						//returns the name of the organisation and a date. #{url} where url is the laravel route is set as the link href
+		"Event" => "Event is {is_full},,0>Available|1>Full"									//{is_full} return 0 or 1 which get replaced
 	*/
 	
 	//create table canvas
+	//$input_data = eloquent model, $markup = the markup array, $id= the table id
 	static public function create_data_table($input_data, $table_markup, $id){
 
 		$tablecontent = array();
@@ -143,11 +151,11 @@ class DataTable{
 		foreach ($table_markup as $value) {
 			$this_column = array();
 			$markup_base = explode(",", $value);
-			$markup_base[0] = DataTable::replace_hash_with_host($markup_base[0]);
-			$replace = DataTable::replacement_regex($markup_base[0]);
+			DataTable::replace_hash_with_host($markup_base);
+			$replace = DataTable::replacement_regex($markup_base);
 
 			if (sizeof($markup_base) > 1 && $markup_base[1] !== ""){
-				$text = "<a href='$markup_base[0]'>$markup_base[1]</a>";
+				$text = "<a href='$markup_base[1]'>$markup_base[0]</a>";
 			}else{
 				$text = $markup_base[0];
 			}
@@ -157,7 +165,7 @@ class DataTable{
 				$sets = explode("|", $markup_base[2]);
 
 				foreach ($sets as $set) {
-					$values = explode(">", $set);
+					$values = explode("=>", $set);
 					$enum[$values[0]] = $values[1];
 				}
 			}
@@ -172,15 +180,23 @@ class DataTable{
 
 	//scan for {data} objects to replace
 	static private function replacement_regex(&$input_string){
-		preg_match_all('/{(.*?)}/', $input_string, $matches);
-		$input_string = preg_replace('/{(.*?)}/', "{}", $input_string);
+		$all_matches = array();
 
-		return $matches[1];
+		foreach ($input_string as &$string) {
+			preg_match_all('/{(.*?)}/', $string, $matches);
+			$string = preg_replace('/{(.*?)}/', "{}", $string);
+			$all_matches = array_merge($matches[1], $all_matches);
+		}
+
+		return $all_matches;
+
 	}
 
 	//# will be automatically translated to the host the website is running on
-	static private function replace_hash_with_host($input_string){
-		return str_replace("#", "http://" . $_SERVER['SERVER_NAME'] . "/", $input_string);
+	static private function replace_hash_with_host(&$input_string){
+		foreach ($input_string as &$string) {
+			$string = str_replace("#", "http://" . $_SERVER['SERVER_NAME'] . "/", $string);
+		}
 	}
 
 }
