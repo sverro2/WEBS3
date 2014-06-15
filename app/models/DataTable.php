@@ -12,14 +12,14 @@ class DataTable{
 		'Plane text {database/function()} - {other/var} - {var}'							//it is possible to mix text and database values
 
 		href:
-		Same as above, but when using # the current hostname is return (for local pages)
+		Same as above, but when using #! the current hostname is return (for local pages)
 
 		Enum:
 		'database_value1>replacement1|database_value1>replacement1'
 
 		Examples:
 		'Name' => '{name}'																	//just returns the name value
-		'Watch' => 'Goto {organisation/name} {getDate()},#{website}'						//returns the name of the organisation and a date. #{url} where url is the laravel route is set as the link href
+		'Watch' => 'Goto {organisation/name} {getDate()},#!{website}'						//returns the name of the organisation and a date. #!{url} where url is the laravel route is set as the link href
 		"Event" => "Event is {is_full},,0>Available|1>Full"									//{is_full} return 0 or 1 which get replaced
 	*/
 	
@@ -195,9 +195,9 @@ class DataTable{
 	//# will be automatically translated to the host the website is running on
 	static private function replace_hash_with_host(&$input_string){
 		foreach ($input_string as &$string) {
-			if (strpos($string, "#") !== false){
-				$string = str_replace("#", "", $string);
-				$string = URL::to($string);	
+			if (strpos($string, "#!") !== false){
+				$string = str_replace("#!", "", $string);
+				$string = URL::to($string);
 			}
 		}
 	}

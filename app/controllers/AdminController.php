@@ -22,8 +22,8 @@ class AdminController extends BaseController {
 			'Organisatie' => '{name}',
 			'Facebook' => 'toon,{facebook}',
 			'Website' => 'link,{website}',
-			'Events' => 'open,#organisation/index/{name}',
-			'Bewerk' => 'bewerk,#manage/edit-organisation/{name}'
+			'Event' => 'open,#!organisation/index/{name}',
+			'Bewerk' => 'bewerk,#!manage/edit-organisation/{name}'
 			);
 
 		$data['title'] = "Organisation";
@@ -38,8 +38,9 @@ class AdminController extends BaseController {
 			"Event" => "{name}",
 			"Start" => "{getSimpleStartDate()}",
 			"Organisatie" => "{organisation/name}",
-			"Vol?" => "{is_full},,0=>Vrij|1=>Vol",
-			"Bewerk" => "bewerk event,#manage/edit-event/{url}"
+			"Vol?" => "{is_full},,0=>Plaatsen Vrij|1=>Vol",
+			"Toon" => "Toon Evenement,#!/#displaymap={id}",
+			"Bewerk" => "bewerk event,#!manage/edit-event/{url}"
 			);
 
 		$data['title'] = "Events";
@@ -49,8 +50,20 @@ class AdminController extends BaseController {
 	}
 
 	public function getSetting(){
+		$data['ytURL'] = Settings::find('ytURL');
 		$data['title'] = "Website Settings";
+
 		return View::make('admin.settings', $data);
+	}
+
+	public function postSetSettings(){
+		$input = Input::get('linkvalue');
+
+		$url = Settings::find('ytURL');
+		$url->value = $input;
+
+		$url->save();
+
 	}
 
 }
