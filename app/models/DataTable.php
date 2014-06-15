@@ -195,7 +195,10 @@ class DataTable{
 	//# will be automatically translated to the host the website is running on
 	static private function replace_hash_with_host(&$input_string){
 		foreach ($input_string as &$string) {
-			$string = str_replace("#", "http://" . $_SERVER['SERVER_NAME'] . "/", $string);
+			if (strpos($string, "#") !== false){
+				$string = str_replace("#", "", $string);
+				$string = URL::to($string);	
+			}
 		}
 	}
 

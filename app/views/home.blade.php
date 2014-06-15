@@ -1,7 +1,7 @@
 @extends('layout.base')
 
 @section('bodycontent')
-    <div id="yt" data-url="{{ $ytURL->value }}"></div>
+    <div id="yt" data-url="{{ @$ytURL->value }}"></div>
     <div id="raster"></div>
 @stop
 

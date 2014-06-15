@@ -20,11 +20,13 @@ class AdminController extends BaseController {
 		$input = Organisation::All();
 		$table_content = array(
 			'Organisatie' => '{name}',
-			'Facebook' => 'Open,{facebook}',
-			'Website' => 'Website,{website}',
-			'Events' => 'Show Events,#organisation/index/{name}'
+			'Facebook' => 'toon,{facebook}',
+			'Website' => 'link,{website}',
+			'Events' => 'open,#organisation/index/{name}',
+			'Bewerk' => 'bewerk,#manage/edit-organisation/{name}'
 			);
 
+		$data['title'] = "Organisation";
 		$data['data_table'] = DataTable::create_data_table($input, $table_content, "organisation_table");
 
 		return View::make('admin.organisation', $data);
@@ -36,17 +38,19 @@ class AdminController extends BaseController {
 			"Event" => "{name}",
 			"Start" => "{getSimpleStartDate()}",
 			"Organisatie" => "{organisation/name}",
-			"Edit" => "Bewerk,#event/edit/{url}",
-			"Vol" => "{is_full},,0=>Vrij|1=>Vol"
+			"Vol?" => "{is_full},,0=>Vrij|1=>Vol",
+			"Bewerk" => "bewerk event,#manage/edit-event/{url}"
 			);
 
+		$data['title'] = "Events";
 		$data['data_table'] = DataTable::create_data_table($input, $table_content, "event_table");
 
 		return View::make('admin.events', $data);
 	}
 
 	public function getSetting(){
-		return View::make('admin.settings');
+		$data['title'] = "Website Settings";
+		return View::make('admin.settings', $data);
 	}
 
 }

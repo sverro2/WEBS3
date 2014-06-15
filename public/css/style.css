@@ -122,9 +122,14 @@ footer{
   display:block;
 }
 
+
 a,a:hover {
   color:#223344;
   text-decoration:none;
+}
+
+a strong , .nav a{
+  color: white !important ;
 }
 
 .icon-bar {

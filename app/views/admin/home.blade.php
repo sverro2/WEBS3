@@ -22,7 +22,7 @@
 	<div class="col-md-9">
     	
 <!-- column 2 -->	
-		<a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>  
+		<a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> {{ $title or "Admin" }}</strong></a>  
 		<hr>
 
 		@section('admincontent')

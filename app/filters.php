@@ -90,6 +90,11 @@ Route::filter('auth.manages', function($route, $request)
 	}	
 });
 
+App::missing(function($exception)
+{
+    Log::error('Missing URL was: ' . Request::fullUrl());
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

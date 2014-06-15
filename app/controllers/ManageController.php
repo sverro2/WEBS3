@@ -4,8 +4,13 @@ class ManageController extends BaseController {
 
 	public function __construct() {
 		parent::__construct();
-		$this->beforeFilter('auth.manages');
-		$this->beforeFilter('csrf', array('only' => 'postCreateEvent'));
+
+		//$this->beforeFilter('auth.manages');
+		//$this->beforeFilter('csrf', array('only' => 'postCreateEvent'));
+	}
+
+	public function index(){
+		return "something";
 	}
 
 	public function getOrganisation($organisation_url)
@@ -18,6 +23,14 @@ class ManageController extends BaseController {
 	{
 		$data['organisation'] = Organisation::where('url', '=', $organisation_url)->firstOrFail();
 		return View::make('organisation.event.create', $data);
+	}
+
+	public function getEditEvent(){
+		return "edit event";
+	}
+
+	public function getEditOrganisation(){
+		return "edit organisation";
 	}
 
 	public function postCreateEvent($organisation_url)
