@@ -1,4 +1,4 @@
-<div class="row eventrow_text">
+<div class="row eventrow_text" id={{ $event->id }}>
   <div class="row">
     <div class="col-sm-12 row-content">
       <div class="row bar-container">

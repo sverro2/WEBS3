@@ -6,6 +6,7 @@ var directionsService = new google.maps.DirectionsService();
 var rendererOptions = {
   draggable: true
 };
+var geo = new google.maps.Geocoder;
 
 
 /*---------------------------MAP MOVEMENT-----------------------------*/
@@ -63,7 +64,6 @@ function initialize() {
 		  google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
 		    computeTotalDistance(directionsDisplay.directions);
 		  });
-
         loadMarkers();
         getClientPos();
 }
@@ -150,7 +150,6 @@ function changeAddress(address){
 		address = $('#adress_input').val();
 	}
 	console.log(address);
-	var geo = new google.maps.Geocoder;
 
 	geo.geocode({'address':address},function(results, status){
 	      if (status == google.maps.GeocoderStatus.OK) {
@@ -160,8 +159,8 @@ function changeAddress(address){
 			computeTotalDistance(directionsDisplay.directions);
 		  	directionsDisplay.setMap(map);
 		  	directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-		  	if(window.location.hash) {
-		  		var hash = window.location.hash;
+	  		var hash = window.location.hash;
+		  	if(!(hash.indexOf("&userpos=") >= 0)) {
 		  		window.location.hash = hash + "&userpos=" + address;
 		  	}
 	      } else {

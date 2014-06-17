@@ -66,3 +66,10 @@ function addRuleRow(rule, value){
 	);
 	window.scrollTo(0, document.body.scrollHeight);
 }
+
+function event_open(id)
+{
+	var parent = $('#' + id).show();
+    var child = parent.find('.row-details');
+    child.show();
+}

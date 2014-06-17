@@ -2,6 +2,9 @@ var timer;
 
 $( document ).ready(function() {
 
+   /*---------------------------ROUTING-----------------------------*/
+    route();
+
    /*---------------------------CASE INSENSITIVE CONTAINS-----------------------------*/
    $.expr[":"].contains = $.expr.createPseudo(function(arg) {
        return function( elem ) {
@@ -20,7 +23,7 @@ $( document ).ready(function() {
       });
    
    /*---------------------------LOGIN WINDOW-----------------------------*/
-	//show the login form when the sign in button is clicked
+	 //show the login form when the sign in button is clicked
    	$('#signin').click(function(){
    		$('#loginModal').show(150);
    	});
@@ -76,9 +79,22 @@ $( document ).ready(function() {
       /*---------------------------MAP MOVEMENT-----------------------------*/
       $('.map').click(function(){movement_openmap($(this))});
       $('#sidebar-content').on('click', '.closemap', function(){movement_closemap()});
+      
+      /*---------------------------MAP ADDRESS-----------------------------*/
+      //submit address
       $('#adress_submit').click(function(){changeAddress()});
+      //address autosuggest
+      $("#adress_input").keyup(function(){
+          clearTimeout(timer);
+          var search = function(){address_suggest()};
+          timer = setTimeout(search, 100);
+      });
 
-      route();
+      /*---------------------------EVENTROW TO URL-----------------------------*/
+      $(document.body).on('click', '.eventrow_text', function(){
+        var hash = window.location.hash;
+        window.location.hash = "&event=" + $(this).attr('id');
+      });
 });
 
 function returnYoutubeURL(){
@@ -95,11 +111,22 @@ function route(){
       for (var i2 = split.length - 1; i2 >= 0; i2--) {
         var value = split[i2+1];
         var element = split[i2];
-        if(element=="userpos"){
-          set_userpos(value);
-        }
-        else if(element=="displaymap"){
-          movement_openmap_quick(value);
+        switch(element) {
+            case "userpos":
+                {
+                  set_userpos(value);
+                }
+                break;
+            case "displaymap":
+                {
+                  movement_openmap_quick(value);
+                }
+                break;
+            case "event":
+                {
+                  event_open(value);
+                }
+                break;
         }
       };
     };
