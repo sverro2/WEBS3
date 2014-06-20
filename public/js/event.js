@@ -47,4 +47,7 @@ function event_open(id)
 	var parent = $('#' + id).show();
     var child = parent.find('.row-details');
     child.show();
+    $('html, body').animate({
+        scrollTop: parent.offset().top
+    });
 }

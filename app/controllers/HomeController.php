@@ -27,7 +27,7 @@ class HomeController extends BaseController {
 	*/
 	public function getIndex()
 	{
-		$data['events'] = AirsoftEvent::all();
+		$data['events'] = AirsoftEvent::whereRaw('end > NOW()')->get();
 		$data['ytURL'] = Settings::find('ytURL');
 		return View::make('home', $data);
 	}

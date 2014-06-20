@@ -83,17 +83,21 @@ $( document ).ready(function() {
       /*---------------------------MAP ADDRESS-----------------------------*/
       //submit address
       $('#adress_submit').click(function(){changeAddress()});
+      $('#adress_input').keyup(function(e) {
+        //alert(e.keyCode);
+        if(e.keyCode == 13) {
+          changeAddress();
+        }
+      });
       //address autosuggest
       $("#adress_input").keyup(function(){
-          clearTimeout(timer);
-          var search = function(){address_suggest()};
-          timer = setTimeout(search, 100);
+        address_suggest();
       });
 
       /*---------------------------EVENTROW TO URL-----------------------------*/
       $(document.body).on('click', '.eventrow_text', function(){
         var hash = window.location.hash;
-        window.location.hash = "&event=" + $(this).attr('id');
+        window.location.hash = "#event=" + $(this).attr('id');
       });
 });
 
