@@ -16,6 +16,11 @@
 {{ HTML::style('css/packages/jquery.dataTables.css') }}
 {{ HTML::script('js/packages/jquery.dataTables.js') }}
 
+{{-- jquery waypoint --}}
+{{-- this package is for the scroll to load functionality --}}
+{{ HTML::script('js/packages/waypoint.min.js') }}
+
+
 {{-- this jquery needs some ui, let's load it in --}}
 {{ HTML::style('css/packages/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
 {{ HTML::script('js/packages/jquery-ui-1.10.4.custom.min.js')}}

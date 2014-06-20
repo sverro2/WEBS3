@@ -37,7 +37,7 @@ $( document ).ready(function() {
       $('.datetimefield').datetimepicker(
          {
             step:15,
-            format: 'Y-m-d h:m'
+            format: 'Y-m-d H:i'
          }
       );
 
