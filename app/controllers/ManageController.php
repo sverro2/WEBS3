@@ -9,10 +9,6 @@ class ManageController extends BaseController {
 		//$this->beforeFilter('csrf', array('only' => 'postCreateEvent'));
 	}
 
-	public function index(){
-		return "something";
-	}
-
 	public function getOrganisation($organisation_url)
 	{
 		$data['organisation'] = Organisation::where('url', '=', $organisation_url)->firstOrFail();

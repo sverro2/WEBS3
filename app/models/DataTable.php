@@ -155,7 +155,7 @@ class DataTable{
 			$replace = DataTable::replacement_regex($markup_base);
 
 			if (sizeof($markup_base) > 1 && $markup_base[1] !== ""){
-				$text = "<a href='$markup_base[1]'>$markup_base[0]</a>";
+				$text = "<a href='$markup_base[1]' target='_blank'>$markup_base[0]</a>";
 			}else{
 				$text = $markup_base[0];
 			}
