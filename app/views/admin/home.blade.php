@@ -29,7 +29,16 @@
 		<div class="row">
 			<!-- center left-->	
 			<div class="col-md-7">
-				Good day! Your are logged in as Admin.              
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Good day! Your are logged in as Admin.
+					</div>
+					<div class="panel-body">
+						
+					</div>
+				    
+				</div>          
 
 			</div><!--/col-->
 		</div>
