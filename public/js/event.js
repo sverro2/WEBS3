@@ -4,6 +4,7 @@ function fb_process(fb_id)
 		var vis = data.visible;
 		if(vis)
 		{
+			console.log(data);
 			var name = data.name;
 			var start_time = fb_parseDT(data.start_time);
 			var end_time = fb_parseDT(data.end_time);

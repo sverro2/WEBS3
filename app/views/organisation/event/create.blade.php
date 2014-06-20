@@ -36,19 +36,19 @@
 		  <div class="panel-body">
 			<div class="input-group input-group-lg">
 				<span class="input-group-addon">Naam</span>
-				{{ Form::text('event-name', null, array('placeholder'=>'Naam', 'class'=>'form-control', 'required'=>'')) }}
+				{{ Form::text('event-name', null, array('placeholder'=>'Naam', 'class'=>'form-control', 'required'=>'', 'id'=>'event-name')) }}
 			</div>
 			<br/>
 			<div class="col-md-6 nopadding_left">
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">Start</span>
-				{{ Form::text('event-start', null, array('class'=>'datetimefield form-control', 'required'=>'')) }}
+				{{ Form::text('event-start', null, array('class'=>'datetimefield form-control', 'required'=>'', 'id'=>'event-start')) }}
 				</div>
 			</div>
 			<div class="col-md-6 nopadding_right">
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">Eind</span>
-					{{ Form::text('event-end', null, array('class'=>'datetimefield form-control', 'required'=>'')) }}
+					{{ Form::text('event-end', null, array('class'=>'datetimefield form-control', 'required'=>'', 'id'=>'event-end')) }}
 				</div>
 			</div>
 			<br/><br/><br/>
@@ -64,7 +64,7 @@
 				{{ Form::select('event-location', $select_locations, null, array('class'=>'form-control')) }}
 			</div>
 			<br/>
-			<textarea class="form-control" id="event-description"></textarea>
+	  		{{ Form::textarea('' , '', array("class"=>"form-control", "id"=>"event-description")) }}
 			<div class="alert alert-info">
 				Schrijf hier een korte omschrijving van je evenement. Dit veld gebruiken om het reglement toe te lichten wordt afgeraden.
 			</div>
@@ -77,7 +77,7 @@
 			<h3 class="panel-title">Reglement</h3>
 		  </div>
 		  <div class="panel-body" id="rulepanel">
-	  		<textarea class="form-control" id="event-rules">{{ $organisation->defaultrules->rules}}</textarea>
+	  		{{ Form::textarea('', $organisation->defaultrules->rules, array("class"=>"form-control", "id"=>"event-rules")) }}
 			<div class="alert alert-info">
 				In dit veld wordt het standaardreglement van je organisatie automatisch ingeladen.
 				Alle aanpassingen die je maakt in dit veld worden wel voor dit evenement opgeslagen.

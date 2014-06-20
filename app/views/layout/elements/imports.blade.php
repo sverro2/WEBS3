@@ -18,7 +18,7 @@
 
 {{-- jquery waypoint --}}
 {{-- this package is for the scroll to load functionality --}}
-{{ HTML::script('js/packages/waypoint.min.js') }}
+{{ HTML::script('js/packages/waypoints.min.js') }}
 
 
 {{-- this jquery needs some ui, let's load it in --}}
