@@ -1,7 +1,4 @@
-@extends('layout.titlebase')
-
-
-@show
+@extends('layout.base')
 
 @section('content')
 	@include('account.elements.loginform')

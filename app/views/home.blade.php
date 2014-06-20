@@ -1,4 +1,7 @@
 @extends('layout.base')
+@section('map')
+	@include('layout.elements.map')
+@stop
 
 @section('bodycontent')
     <div id="yt" data-url="{{ @$ytURL->value }}"></div>

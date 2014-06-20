@@ -12,7 +12,8 @@
         <div id="fb-root"></div>
 
 		@yield('bodycontent')
-		@include('layout.elements.map')
+		@section('map')
+		@show
 		<div id="wrap" class="slideleft">
 			<div class="container">
 			  <div class="row">

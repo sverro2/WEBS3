@@ -1,4 +1,4 @@
-@extends('layout.titlebase')
+@extends('layout.base')
 
 @section('content')
 	{{ Form::open(array('url' => 'account/register', 'class'=>'form col-md-12 center-block')) }}

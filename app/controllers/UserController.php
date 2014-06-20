@@ -26,13 +26,15 @@ class UserController extends BaseController {
 		$pass = Input::get('password');
 
 		$peppered = sha1(sha1($pass) . sha1($this->pepper));
-
+		$user = User::where('username', '=', $name)->firstOrFail();
+		/*
 		//moet nog worden gefixed. Werkt nu nog niet omdat onze has anders is dan door Auth::atempt wordt verwacht...
 		if (Auth::attempt(array('username'=>Input::get('username'), 'password'=>Input::get('password')))){
 			return "yup";
 		}else{
 			return "no";
 		}
+		*/
 		if($user === null)
 		{
 			Redirect::to('account/login');
