@@ -52,3 +52,11 @@ function event_open(id)
         scrollTop: parent.offset().top
     });
 }
+
+function event_display(start, stop)
+{	
+	$.get("index.php/home/events", {first : (nEvents + 1), count: 8}, function( events ) {
+		$('#content').append(events);
+		nEvents +=8;
+	});
+}

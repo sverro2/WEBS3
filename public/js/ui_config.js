@@ -1,4 +1,5 @@
 var timer;
+var nEvents = 8;
 
 $( document ).ready(function() {
 
@@ -98,6 +99,13 @@ $( document ).ready(function() {
       $(document.body).on('click', '.eventrow_text', function(){
         var hash = window.location.hash;
         window.location.hash = "#event=" + $(this).attr('id');
+      });
+
+      /*---------------------------EVENTROW TO URL-----------------------------*/
+      $(window).scroll(function() {
+         if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            event_display(nEvents, 8);
+         }
       });
 });
 

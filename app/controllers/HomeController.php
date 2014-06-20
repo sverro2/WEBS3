@@ -27,8 +27,16 @@ class HomeController extends BaseController {
 	*/
 	public function getIndex()
 	{
-		$data['events'] = AirsoftEvent::whereRaw('end > NOW()')->get();
+		$data['events'] = AirsoftEvent::whereRaw('end > NOW()')->orderBy('start','asc')->take(8)->get();
 		$data['ytURL'] = Settings::find('ytURL');
 		return View::make('home', $data);
+	}
+
+	public function getEvents()
+	{
+		$first = Input::get('first');
+		$count = Input::get('count');
+		$data['events'] = AirsoftEvent::whereRaw('end > NOW()')->orderBy('start','asc')->skip($first)->take($count)->get();
+		return View::make('organisation.event.eventlist', $data);		
 	}
 }
