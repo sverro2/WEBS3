@@ -81,10 +81,10 @@ function event_open(id)
 function event_display(start, stop)
 {	
 	loading = true;
-	AnimateRotate(360);
+	$('#refresh_rotate').addClass('spinning');
 	$("#divloading #text").html('Meer events worden geladen');
-	$.get("index.php/home/events", {first : (nEvents + 1), count: 8}, function( events ) {
-		//$('#divloading').remove();
+	$.get("/home/events", {first : (nEvents + 1), count: 8}, function( events ) {
+		$('#refresh_rotate').removeClass('spinning');
 		$(events).insertBefore("#divloading");
 		nEvents +=8;
 		loading = false;
@@ -98,23 +98,4 @@ function event_display(start, stop)
         	  fb_load($(this), fb_id);
   			}
       });
-}
-
-function AnimateRotate(angle) {
-    // caching the object for performance reasons
-    var $elem = $('#refresh_rotate');
-
-    // we use a pseudo object for the animation
-    // (starts from `0` to `angle`), you can name it as you want
-    $({deg: 0}).animate({deg: angle}, {
-        duration: 1000,
-        step: function(now) {
-            // in the step-callback (that is fired each step of the animation),
-            // you can use the `now` paramter which contains the current
-            // animation-position (`0` up to `angle`)
-            $elem.css({
-                transform: 'rotate(' + now + 'deg)'
-            });
-        }
-    });
 }

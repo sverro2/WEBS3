@@ -37,6 +37,6 @@ class HomeController extends BaseController {
 		$first = Input::get('first');
 		$count = Input::get('count');
 		$data['events'] = AirsoftEvent::whereRaw('end > NOW()')->orderBy('start','asc')->skip($first)->take($count)->get();
-		return View::make('organisation.event.eventlist', $data);		
+		return View::make('organisation.event.elements.eventlist', $data);		
 	}
 }

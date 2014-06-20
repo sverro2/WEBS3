@@ -190,3 +190,8 @@
   margin-top:10px;
   margin-bottom: 10px;
 }
+
+.spinning{
+  animation: spin 2s steps(300) infinite;
+  -webkit-animation: spin 2s steps(300) infinite;
+}
