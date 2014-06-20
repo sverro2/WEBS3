@@ -1,4 +1,7 @@
 var timer;
+var nEvents = 8;
+var loading = false;
+var root_url;
 
 $( document ).ready(function() {
 
@@ -37,7 +40,7 @@ $( document ).ready(function() {
       $('.datetimefield').datetimepicker(
          {
             step:15,
-            format: 'Y-m-d h:m'
+            format: 'Y-m-d H:i'
          }
       );
 
@@ -61,8 +64,10 @@ $( document ).ready(function() {
       });
 
       /*---------------------------SLIDE OUT DETAILS-----------------------------*/
-      $('.row-content').click(function(){
-         var parent = $(this).parents('.eventrow_text:last');
+      $(document.body).on('click', '.eventrow_text', function(){
+         var hash = window.location.hash;
+         window.location.hash = "#event=" + $(this).attr('id');
+         var parent = $(this);
          var child = parent.find('.row-details');
          child.slideToggle("blind");
          var map = child.find('.map');
@@ -83,17 +88,28 @@ $( document ).ready(function() {
       /*---------------------------MAP ADDRESS-----------------------------*/
       //submit address
       $('#adress_submit').click(function(){changeAddress()});
+      $('#adress_input').keyup(function(e) {
+        //alert(e.keyCode);
+        if(e.keyCode == 13) {
+          changeAddress();
+        }
+      });
       //address autosuggest
       $("#adress_input").keyup(function(){
-          clearTimeout(timer);
-          var search = function(){address_suggest()};
-          timer = setTimeout(search, 100);
+        address_suggest();
       });
 
-      /*---------------------------EVENTROW TO URL-----------------------------*/
-      $(document.body).on('click', '.eventrow_text', function(){
-        var hash = window.location.hash;
-        window.location.hash = "&event=" + $(this).attr('id');
+      /*---------------------------LOAD FACEBOOK IN TO EVENTROWS---------------*/
+      $('.eventrow_text').each(function(){
+          var fb_id = $(this).data('fb_id');
+          fb_load($(this), fb_id);
+      });
+
+      /*---------------------------EVENTROW SCROLLING-----------------------------*/
+      $(window).scroll(function() {
+         if($(window).scrollTop() + $(window).height() == $(document).height() && !loading) {
+            event_display(nEvents, 8);
+         }
       });
 });
 

@@ -284,6 +284,10 @@ a strong , .nav a{
   pointer-events:auto;
 }
 
+.centered{
+  text-align: center;
+}
+
 .absolute
     
 .btn-twitter {background-color:#4099FF;color:#fff;}

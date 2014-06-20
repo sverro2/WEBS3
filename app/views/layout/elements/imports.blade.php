@@ -1,7 +1,7 @@
 {{-- Load in twitter bootstrap --}}
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
-{{-- HTML::style('css/bootstrap.min.css') --}}
+{{-- HTML::style('css/packages/bootstrap.min.css') --}}
 {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css') }}
 
 {{-- load in jquery --}}
@@ -9,22 +9,27 @@
 {{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js') }}
 
 {{-- jquery datetimepicker plugin --}}
-{{ HTML::style('css/jquery.datetimepicker.css') }}
-{{ HTML::script('js/jquery.datetimepicker.js') }}
+{{ HTML::style('css/packages/jquery.datetimepicker.css') }}
+{{ HTML::script('js/packages/jquery.datetimepicker.js') }}
 
 {{-- jquery datatable --}}
-{{ HTML::style('css/jquery.dataTables.css') }}
-{{ HTML::script('js/jquery.dataTables.js') }}
+{{ HTML::style('css/packages/jquery.dataTables.css') }}
+{{ HTML::script('js/packages/jquery.dataTables.js') }}
+
+{{-- jquery waypoint --}}
+{{-- this package is for the scroll to load functionality --}}
+{{ HTML::script('js/packages/waypoints.min.js') }}
+
 
 {{-- this jquery needs some ui, let's load it in --}}
-{{ HTML::style('css/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
-{{ HTML::script('js/jquery-ui-1.10.4.custom.min.js')}}
+{{ HTML::style('css/packages/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}
+{{ HTML::script('js/packages/jquery-ui-1.10.4.custom.min.js')}}
 
 {{-- load in facebook js api --}}
-{{ HTML::script('js/facebookapi.js') }}
+{{ HTML::script('js/packages/facebookapi.js') }}
 
 {{-- load in background video api --}}
-{{ HTML::script('js/jquery.mb.YTPlayer.js') }}
+{{ HTML::script('js/packages/jquery.mb.YTPlayer.js') }}
 
 {{-- load in maps api --}}
 {{ HTML::script('https://maps.googleapis.com/maps/api/js?key=AIzaSyASxxSOwR_whPmUsMeN_kcJrCDhjzMAxy0') }}

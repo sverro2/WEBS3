@@ -29,6 +29,14 @@
   background-color:rgba(0,0,0,0.7);
 }
 
+.full{
+  background-color:rgba(50,0,0,0.7);
+}
+
+.full h1{
+  background-color:rgba(0,0,0,0);
+}
+
 .eventrow_text .map img{
   margin-top:15px;
   margin-bottom:5px;
@@ -172,4 +180,13 @@
   float:right;
 }
 
+#divloading{
+  height:100px;
+  line-height: 100px;
+}
 
+#divloading .left-bar div{
+  padding:5px;
+  margin-top:10px;
+  margin-bottom: 10px;
+}

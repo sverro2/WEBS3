@@ -1,4 +1,5 @@
-<div class="row eventrow_text" id={{ $event->id }}>
+<div class="@if($event->is_full)full @endif
+eventrow_text" id={{ $event->id }} @if(!is_null($event->fb_id)) data-fb_id={{ $event->fb_id }} @endif data-fb_loaded="false">
   <div class="row">
     <div class="col-sm-12 row-content">
       <div class="row bar-container">
@@ -8,7 +9,7 @@
             <span class="day">{{ $event->getSimpleStartMonth()}}</span>
           </div>
         </div>
-        <div class="col-sm-10">
+        <div class="col-sm-8">
           <div class="row">
             <div class="col-xs-12">
               <h3>{{ $name }}</h3>
@@ -21,6 +22,11 @@
               </span>
             </div>
           </div>  
+        </div>
+        <div class="col-sm-2">
+          @if($event->is_full)
+            <h1 class="full"> VOL </h1>
+          @endif
         </div>
       </div>
     </div>
