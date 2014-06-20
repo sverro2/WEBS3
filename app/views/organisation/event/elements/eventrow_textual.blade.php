@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-sm-12 row-content">
       <div class="row bar-container">
-        <div class="col-xs-2 left-bar">
+        <div class="col-sm-2 left-bar hidden-xs">
           <div class="dateday">
             <span class="date">{{ $event->getSimpleStartDay() }}</span><br/>
             <span class="day">{{ $event->getSimpleStartMonth()}}</span>
           </div>
         </div>
-        <div class="col-xs-8">
+        <div class="col-sm-10">
           <div class="row">
             <div class="col-xs-12">
               <h3>{{ $name }}</h3>
@@ -21,16 +21,6 @@
               </span>
             </div>
           </div>  
-        </div>
-        <div class="col-xs-2 hidden-xs">
-          <button type="button" class="btn btn-default">
-            Details <span class="caret"></span>
-          </button>
-        </div>
-        <div class="col-xs-2 visible-xs">
-          <div class="mobile-arrow">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </div>
         </div>
       </div>
     </div>
@@ -55,17 +45,7 @@
             <h3>Eind</h3>
             <h4>{{$event->getSimpleEnd()}}</h4>
             @if(!is_null($event->fb_id))
-              <h3>Facebook</h3>                    
-                <a href={{'https://www.facebook.com/events/' . $event->fb_id}} title="Event facebook" target="_blank">
-                  <img src="assets/social/facebook_16.png" alt="Facebook icon" />
-                  <span class="site">Evenement pagina</span>
-                </a>
-            @endif
-            @if($event->fb_visible())
-              <br/>
-              Gaat: {{ $event->fb_event()->attending() }}
-               Misschien: {{ $event->fb_event()->maybe() }}
-               Uitgenodigd: {{ $event->fb_event()->invited() }}
+              <div class="event_fb"></div>
             @endif
           </div>
           <div class="extra_details col-sm-6 col-md-3">

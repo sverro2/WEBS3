@@ -35,6 +35,10 @@ h4{
   z-index: 101;
 }
 
+#title a{
+  color:white;
+}
+
 .header{
   background-color:rgba(0,0,0,0.7);
   margin-top: 20px;

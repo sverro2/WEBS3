@@ -2,19 +2,6 @@
 
 @section('content')
 <div class="event-create">
-	<div class="row eventrow">
-	<div class="bg-banner bg-banner-move" style="background-image:url({{$organisation->banner}})" ></div>
-		<div class="col-sm-12 row-content">
-			<div class="row bar-container">
-			</div>
-			<div class="row bottom-bar">
-				<div class="col-sm-12">
-					<h4> New event </h4>
-					By {{ $organisation->name }}
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="row">
 		<div class="panel panel-default">

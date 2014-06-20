@@ -35,18 +35,17 @@ class ManageController extends BaseController {
 		$location_id = Input::get('event-location');
 		$organisation_id = Input::get('organisation-id');
 		$name = Input::get('event-name');
-		$url = preg_replace("/[^A-Za-z0-9]/", "", $name);
 		$event = new AirsoftEvent();
 		$event->name = $name;
 		$event->start = Input::get('event-start');
 		$event->end = Input::get('event-end');
 		$event->organisation_id = $organisation_id;
 		$event->location_id = $location_id;
-		$event->url = $url;
+		$event->description = Input::get('event-description');
 		$event->type_id = 4;
 
 		$rules = new RuleSet();
-		$rules->name = $event->name;
+		$rules->name = $event->name . $event->start;
 		$rules->rules = Input::get('event-rules');
 		$rules->organisation_id = $organisation_id;
 		$rules->save();
@@ -55,7 +54,7 @@ class ManageController extends BaseController {
 
 		$event->save();
 
-		return Redirect::to('organisation/event/' . $url);
+		return Redirect::to('/');
 	}
 
 	public function postUpdateOrganisationInfo(){

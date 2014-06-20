@@ -12,6 +12,8 @@
 */
 
 
+Route::controller('home', 'HomeController');
+
 Route::controller('account', 'UserController');
 
 Route::controller('admin', 'AdminController');

@@ -42,31 +42,6 @@ function fb_parseDT(datetime)
 
 }
 
-function addRuleRow(rule, value){
-	$('#rulepanel #addedrules').append(
-		'<div class="row rulerow">' +
-		'	<div class="col-md-5">' +
-		'		<div class="input-group input-group-lg">' +
-		'			<span class="input-group-addon">Regel</span>' +
-		'			<input class="form-control rulefield" type="text" value=' + rule + ' disabled>' +
-		'		</div>' +
-		'	</div>' +
-		'	<div class="col-md-5">' +
-		'		<div class="input-group input-group-lg">' +
-		'			<span class="input-group-addon">Waarde</span>' +
-		'			<input class="form-control valfield" type="text" value=' + value + ' disabled>' +
-		'		</div>' +
-		'   </div>' +
-		'	<div class="col-md-1">' +
-		'		<button type="button" class="btn btn-default btn-lg deleterulebtn">' +
-		'		  <span class="glyphicon glyphicon-minus"></span>' +
-		'		</button>' +
-		'	</div>' +
-		'</div>'
-	);
-	window.scrollTo(0, document.body.scrollHeight);
-}
-
 function event_open(id)
 {
 	var parent = $('#' + id).show();
