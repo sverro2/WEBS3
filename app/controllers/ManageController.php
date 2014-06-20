@@ -21,12 +21,8 @@ class ManageController extends BaseController {
 		return View::make('organisation.event.create', $data);
 	}
 
-	public function getEditEvent(){
-		return "edit event";
-	}
-
-	public function getEditOrganisation(){
-		return "edit organisation";
+	public function getCreateLocation($organisation_id, $location_id = null){
+		return $organisation_id . $location_id;
 	}
 
 	public function postCreateEvent($organisation_url)

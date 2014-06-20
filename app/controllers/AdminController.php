@@ -23,7 +23,7 @@ class AdminController extends BaseController {
 			'Facebook' => 'toon,{facebook}',
 			'Website' => 'link,{website}',
 			'Event' => 'open,#!organisation/index/{name}',
-			'Bewerk' => 'bewerk,#!manage/edit-organisation/{name}'
+			'Bewerk' => 'bewerk,#!manage/organisation/{name}'
 			);
 
 		$data['title'] = "Organisation";
@@ -40,7 +40,7 @@ class AdminController extends BaseController {
 			"Organisatie" => "{organisation/name}",
 			"Vol?" => "{is_full},,0=>Plaatsen Vrij|1=>Vol",
 			"Toon" => "Toon Evenement,#!/#displaymap={id}",
-			"Bewerk" => "bewerk event,#!manage/edit-event/{url}"
+			"Bewerk" => "bewerk,#!manage/create-event/{id}"
 			);
 
 		$data['title'] = "Events";
