@@ -39,7 +39,7 @@ $(document).ready(function(){
 		//add id
 		input['id'] = $('#organisation').data('id');
 
-		$.post('{{url("manage/update-organisation-info")}}', input, function(status){
+		$.post('{{url("manage/update-organisation-info/$organisation->url")}}', input, function(status){
 
 			if(status !== "succes"){
 				alert("Changes are not saved! An error occured...")
@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 </script>
 
-<div id="organisation" data-id="{{ $organisation->id }}">
+<div id="organisation" data-id="{{ $organisation->id }}" data-url="{{ $organisation->url }}">
 
 	<div class="row">
 		<div class="col-sm-12">

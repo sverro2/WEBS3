@@ -22,8 +22,8 @@ class AdminController extends BaseController {
 			'Organisatie' => '{name}',
 			'Facebook' => 'toon,{facebook}',
 			'Website' => 'link,{website}',
-			'Event' => 'open,#!organisation/index/{name}',
-			'Bewerk' => 'bewerk,#!manage/organisation/{name}'
+			'Event' => 'open,#!organisation/index/{url}',
+			'Bewerk' => 'bewerk,#!manage/organisation/{url}'
 			);
 
 		$data['title'] = "Organisation";

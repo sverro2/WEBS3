@@ -81,7 +81,7 @@ class ManageController extends BaseController {
 		return Redirect::to('/');
 	}
 
-	public function postUpdateOrganisationInfo(){
+	public function postUpdateOrganisationInfo($organisation_url){
 		$id = Input::get('id');
 		$orgname = Input::get('orgname_edit');
 		$facebook = Input::get('facebook_edit');
