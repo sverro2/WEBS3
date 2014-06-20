@@ -180,4 +180,13 @@
   float:right;
 }
 
+#divloading{
+  height:100px;
+  line-height: 100px;
+}
 
+#divloading .left-bar div{
+  padding:5px;
+  margin-top:10px;
+  margin-bottom: 10px;
+}

@@ -1,4 +1,8 @@
+@if(!is_null($event->fb_id))
+<a href={{ url('organisation/event/' . $event->url) }} class="bannerlink" data-fb={{ $event->fb_id }}>
+@else
 <a href={{ url('organisation/event/' . $event->url) }} class="bannerlink">
+@endif
 <div class="row eventrow">
   <div class="bg-banner"></div>
     <div class="col-sm-12 row-content">

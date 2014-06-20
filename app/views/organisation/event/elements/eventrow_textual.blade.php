@@ -1,8 +1,5 @@
-@if($event->is_full)
-<div class="row eventrow_text full" id={{ $event->id }}>
-@else
-<div class="row eventrow_text" id={{ $event->id }}>
-@endif
+<div class="@if($event->is_full)full @endif
+eventrow_text" id={{ $event->id }} @if(!is_null($event->fb_id)) data-fb_id={{ $event->fb_id }} @endif data-fb_loaded="false">
   <div class="row">
     <div class="col-sm-12 row-content">
       <div class="row bar-container">

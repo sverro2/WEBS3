@@ -5,12 +5,20 @@ class FacebookEvent  {
 	private $id;
 	private $facebook;
 	private $visible;
+	private $attending = "onbekend";
+	private $maybe = "onbekend";
+	private $invited = "onbekend";
 
 	public function __construct($event_id)
 	{
 		$this->id = $event_id;
 		$this->facebook = new Facebook(Config::get('facebook'));
 		$this->visible = $this->is_visible();
+		if($this->visible){
+			$this->attending = $this->attending();
+			$this->maybe = $this->maybe();
+			$this->invited = $this->invited();
+		}
 	}
 
 	public function is_visible()
@@ -82,8 +90,10 @@ class FacebookEvent  {
 	{
 		$visible = $this->is_visible();
 		$return = array();
-		$array['hoi'] = "ha";
 		$return['visible'] = $visible;
+		$return['attending'] = $this->attending;
+		$return['maybe'] = $this->maybe;
+		$return['invited'] = $this->invited;
 		if($visible)
 		{
 			$event = $this->getAllProperties();

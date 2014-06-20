@@ -1,5 +1,6 @@
 var timer;
 var nEvents = 8;
+var loading = false;
 
 $( document ).ready(function() {
 
@@ -62,8 +63,10 @@ $( document ).ready(function() {
       });
 
       /*---------------------------SLIDE OUT DETAILS-----------------------------*/
-      $('.row-content').click(function(){
-         var parent = $(this).parents('.eventrow_text:last');
+      $(document.body).on('click', '.eventrow_text', function(){
+         var hash = window.location.hash;
+         window.location.hash = "#event=" + $(this).attr('id');
+         var parent = $(this);
          var child = parent.find('.row-details');
          child.slideToggle("blind");
          var map = child.find('.map');
@@ -95,15 +98,15 @@ $( document ).ready(function() {
         address_suggest();
       });
 
-      /*---------------------------EVENTROW TO URL-----------------------------*/
-      $(document.body).on('click', '.eventrow_text', function(){
-        var hash = window.location.hash;
-        window.location.hash = "#event=" + $(this).attr('id');
+      /*---------------------------LOAD FACEBOOK IN TO EVENTROWS---------------*/
+      $('.eventrow_text').each(function(){
+          var fb_id = $(this).data('fb_id');
+          fb_load($(this), fb_id);
       });
 
-      /*---------------------------EVENTROW TO URL-----------------------------*/
+      /*---------------------------EVENTROW SCROLLING-----------------------------*/
       $(window).scroll(function() {
-         if($(window).scrollTop() + $(window).height() == $(document).height()) {
+         if($(window).scrollTop() + $(window).height() == $(document).height() && !loading) {
             event_display(nEvents, 8);
          }
       });

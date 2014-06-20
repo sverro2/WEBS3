@@ -1,6 +1,8 @@
 @extends('layout.base')
 
 @section('content')
+
+{{ Form::open(array('url' => 'manage/create-event/milsimsport')) }}
 <div class="event-create">
 
 	<div class="row">
@@ -11,7 +13,7 @@
 		  <div class="panel-body">
 			<div class="input-group">
 				<span class="input-group-addon">Facebook event-id</span>
-				<input type="text" class="form-control" id="fb-event-id" placeholder="ID">
+				{{ Form::text('fb-event-id', null, array('placeholder'=>'ID', 'class'=>'form-control', 'required'=>'', 'id'=>'fb-event-id')) }}
 				<span class="input-group-btn">
 					<button class="btn btn-default" type="button" id="fb-event-submit">Opslaan</button>
 				</span>
@@ -24,8 +26,6 @@
 			</div>
 		  </div>
 		</div>
-
-		{{ Form::open(array('url' => 'manage/create-event/milsimsport')) }}
 		{{ Form::hidden('organisation-id', $organisation->id) }}
 		{{ Form::hidden('banner-top', null, array('id'=>'banner-top')) }}
 		{{ Form::hidden('banner-left', null, array('id'=>'banner-left')) }}

@@ -43,9 +43,33 @@ function fb_parseDT(datetime)
 
 }
 
+function fb_load(element, fb_id)
+{
+	$.get("index.php/organisation/facebook-event", {id : fb_id}, function( data ) {
+		var vis = data.visible;
+		if(vis)
+		{
+			var details = element.find('.extra_details:first');
+			var text = '<h3>Facebook</h3>'                    
+            +'    <a href="https://www.facebook.com/events/' +  fb_id + '" title="Event facebook" target="_blank">'
+            +'      <img src="assets/social/facebook_16.png" alt="Facebook icon" />'
+            +'      <span class="site">Evenement pagina</span>'
+            +'    </a>'
+            +'  <br/>'
+            +'  Gaat: ' + data.attending
+            +'   Misschien: ' + data.maybe
+            +'   Uitgenodigd: ' + data.invited;
+			details.append(text);
+			element.data('fb_loaded', 'true');
+		}
+	});
+	element.data('fb_loaded', "true");
+}
+
 function event_open(id)
 {
 	var parent = $('#' + id).show();
+	if(parent.length == 0){return;}
     var child = parent.find('.row-details');
     child.show();
     $('html, body').animate({
@@ -55,8 +79,41 @@ function event_open(id)
 
 function event_display(start, stop)
 {	
+	loading = true;
+	AnimateRotate(360);
+	$("#divloading #text").html('Meer events worden geladen');
 	$.get("index.php/home/events", {first : (nEvents + 1), count: 8}, function( events ) {
-		$('#content').append(events);
+		//$('#divloading').remove();
+		$(events).insertBefore("#divloading");
 		nEvents +=8;
+		loading = false;
+		$("#divloading #text").html('Scroll naar beneden om meer events te laden');
 	});
+	$('.eventrow_text').each(function(){
+          var fb_id = $(this).data('fb_id');
+          var loaded = $(this).data('fb_loaded');
+          console.log(loaded);
+          if(loaded != "true"){
+        	  fb_load($(this), fb_id);
+  			}
+      });
+}
+
+function AnimateRotate(angle) {
+    // caching the object for performance reasons
+    var $elem = $('#refresh_rotate');
+
+    // we use a pseudo object for the animation
+    // (starts from `0` to `angle`), you can name it as you want
+    $({deg: 0}).animate({deg: angle}, {
+        duration: 1000,
+        step: function(now) {
+            // in the step-callback (that is fired each step of the animation),
+            // you can use the `now` paramter which contains the current
+            // animation-position (`0` up to `angle`)
+            $elem.css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
 }

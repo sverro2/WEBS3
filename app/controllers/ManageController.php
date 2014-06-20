@@ -43,6 +43,7 @@ class ManageController extends BaseController {
 		$event->location_id = $location_id;
 		$event->description = Input::get('event-description');
 		$event->type_id = 4;
+		$event->fb_id = Input::get('fb-event-id');
 
 		$rules = new RuleSet();
 		$rules->name = $event->name . $event->start;
