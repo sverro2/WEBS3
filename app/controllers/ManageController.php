@@ -57,4 +57,25 @@ class ManageController extends BaseController {
 
 		return Redirect::to('organisation/event/' . $url);
 	}
+
+	public function postUpdateOrganisationInfo(){
+		$id = Input::get('id');
+		$orgname = Input::get('orgname_edit');
+		$facebook = Input::get('facebook_edit');
+		$url = Input::get('url_edit');
+		$ruleset = Input::get('ruleset_edit');
+		$website = Input::get('website_edit');
+
+		$table = Organisation::where('id', '=', $id)->firstOrFail();
+		$ruleset = RuleSet::where('name', '=', $ruleset)->first();
+
+		$table->name = $orgname;
+		$table->facebook = $facebook;
+		$table->url = $url;
+		$table->ruleset_id = $ruleset->id;
+		$table->website = $website;
+
+		$table->save();
+		return "succes";
+	}
 }

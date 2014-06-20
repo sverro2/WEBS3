@@ -26,7 +26,7 @@ $(document).ready(function(){
 		$(this).removeClass('glyphicon-ok');
 		$(this).addClass('glyphicon-wrench');
 
-		var input = [];
+		var input = {};
 		
 		$('.organisation_info_edit').each(function(){
 			var currentInput = $(this).children('input');
@@ -36,8 +36,19 @@ $(document).ready(function(){
 
 		});
 
+		//add id
+		input['id'] = $('#organisation').data('id');
+
+
 		//TODO gegevens doorsturen via AJAX
 		console.log(input);
+
+		$.post('{{url("manage/update-organisation-info")}}', input, function(status){
+
+			if(status !== "succes"){
+				alert("Changes are not saved! An error occured...")
+			}
+		});
 
 		
 	});
@@ -45,7 +56,7 @@ $(document).ready(function(){
 
 </script>
 
-<div id="organisation">
+<div id="organisation" data-id="{{ $organisation->id }}">
 	<div class="row eventrow" id="banner" style="background-image:url( {{$organisation->banner}} )">
 		<div class="col-sm-12 row-content">
 		    <div class="row bar-container">
@@ -59,7 +70,7 @@ $(document).ready(function(){
 	</div>
 	<div class="row">
 		<div class="col-sm-12">
-			<h2>Control panel {{$organisation->name}}</h2>
+			<h2>Control panel {{ $organisation->name }}</h2>
 		</div>
 	</div>
 	<div class="row">

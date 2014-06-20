@@ -2,6 +2,7 @@
 
 class Organisation extends Eloquent {
 	protected $table = 'organisation';
+	public $timestamps = false;
 
 	public function locations()
 	{
