@@ -1,6 +1,7 @@
 var timer;
 var nEvents = 8;
 var loading = false;
+var root_url;
 
 $( document ).ready(function() {
 

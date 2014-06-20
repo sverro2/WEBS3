@@ -1,6 +1,7 @@
 function fb_process(fb_id)
 {
-	$.get("../../organisation/facebook-event", {id : fb_id}, function( data ) {
+	var url = '/organisation/facebook-event'; 
+	$.get(url, {id : fb_id}, function( data ) {
 		var vis = data.visible;
 		if(vis)
 		{
@@ -45,7 +46,7 @@ function fb_parseDT(datetime)
 
 function fb_load(element, fb_id)
 {
-	$.get("index.php/organisation/facebook-event", {id : fb_id}, function( data ) {
+	$.get("/organisation/facebook-event", {id : fb_id}, function( data ) {
 		var vis = data.visible;
 		if(vis)
 		{

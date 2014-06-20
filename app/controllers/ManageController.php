@@ -21,8 +21,31 @@ class ManageController extends BaseController {
 		return View::make('organisation.event.create', $data);
 	}
 
-	public function getEditEvent(){
-		return "edit event";
+	public function getEditEvent($organisation_url, $event_id){
+		$event = AirsoftEvent::where('id', '=', $event_id)->firstOrFail();
+		$data['event'] = $event;
+		$data['organisation'] = $event->organisation;
+		return View::make('organisation.event.update', $data);
+	}
+
+	public function postEditEvent($organisation_url, $event_id)
+	{
+		$event = AirsoftEvent::find($event_id);
+
+		$event->name = Input::get('event-name');
+		$event->start = Input::get('event-start');
+		$event->end = Input::get('event-end');
+		$event->organisation_id = Input::get('organisation-id');
+		$event->location_id = Input::get('event-location');
+		$event->description = Input::get('event-description');
+		$event->fb_id = Input::get('fb-event-id');
+		
+		$ruleset = RuleSet::findOrFail($event->ruleset->id);
+		$ruleset->rules = Input::get('event-rules');
+		$ruleset->save();
+		
+		$event->save();
+		return Redirect::back();
 	}
 
 	public function getEditOrganisation(){
