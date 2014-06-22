@@ -111,6 +111,12 @@ $( document ).ready(function() {
             event_display(nEvents, 8);
          }
       });
+
+      /*---------------------------RULESET SELECT--------------------------------*/
+      $('#event-ruleset-select').change(function(){
+        value = $(this).val();
+        ruleset_get(value);
+      });
 });
 
 function returnYoutubeURL(){

@@ -45,5 +45,11 @@ class OrganisationController extends BaseController {
 		return Response::json($data);
 	}
 
-
+	public function getRuleset()
+	{
+		$id = Input::get('id');
+		$data = RuleSet::find($id);
+		//return var_dump($data);
+		return Response::json($data);
+	}
 }

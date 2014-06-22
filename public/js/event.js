@@ -99,3 +99,11 @@ function event_display(start, stop)
   			}
       });
 }
+
+function ruleset_get(id)
+{
+	$.get("/organisation/ruleset", {id : id}, function( data ) {
+		$('#event-rules').val(data.rules);
+	});
+	
+}

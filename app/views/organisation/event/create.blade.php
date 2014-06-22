@@ -75,6 +75,22 @@
 			<h3 class="panel-title">Reglement</h3>
 		  </div>
 		  <div class="panel-body" id="rulepanel">
+		  	<div class="input-group input-group-lg">
+				<span class="input-group-addon">Voorgaand reglement:</span>
+				<?php
+					$select_rulesets = array();
+					foreach($organisation->rulesets as $ruleset)
+					{
+						$select_rulesets[$ruleset->id] = $ruleset->name;
+					}
+				?>
+				{{ Form::select('event-ruleset', $select_rulesets, null, array('class'=>'form-control', 'id'=>'event-ruleset-select')) }}
+
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">importeren</button>
+		      </span>
+			</div>
+			<br/>
 	  		{{ Form::textarea('', $organisation->defaultrules->rules, array("class"=>"form-control", "id"=>"event-rules")) }}
 			<div class="alert alert-info">
 				In dit veld wordt het standaardreglement van je organisatie automatisch ingeladen.
