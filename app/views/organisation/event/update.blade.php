@@ -13,7 +13,7 @@
 		  <div class="panel-body">
 			<div class="input-group">
 				<span class="input-group-addon">Facebook event-id</span>
-				{{ Form::text('fb-event-id', $event->fb_id, array('placeholder'=>'ID', 'class'=>'form-control', 'required'=>'', 'id'=>'fb-event-id')) }}
+				{{ Form::text('fb-event-id', $event->fb_id, array('placeholder'=>'ID', 'class'=>'form-control', 'id'=>'fb-event-id')) }}
 				<span class="input-group-btn">
 					<button class="btn btn-default" type="button" id="fb-event-submit">Opslaan</button>
 				</span>
@@ -60,6 +60,14 @@
 					}
 				?>
 				{{ Form::select('event-location', $select_locations, $event->location->name, array('class'=>'form-control')) }}
+			</div>
+			<br/>
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon">Maximum aantal deelnemers</span>
+			{{ Form::text('event-participants', $event->max_participants, array('class'=>'form-control', 'required'=>'', 'id'=>'event-participants')) }}
+		      <span class="input-group-addon">
+		        vol: {{ Form::checkbox('event-full', null, $event->is_full)}}
+		      </span>
 			</div>
 			<br/>
 	  		{{ Form::textarea('event-description' , $event->description, array("class"=>"form-control", "id"=>"event-description")) }}

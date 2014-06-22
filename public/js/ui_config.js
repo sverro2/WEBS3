@@ -128,6 +128,11 @@ $( document ).ready(function() {
             }
           });
         }
+
+      /*---------------------------RULESET SELECT--------------------------------*/
+      $('#event-ruleset-select').change(function(){
+        value = $(this).val();
+        ruleset_get(value);
       });
 });
 

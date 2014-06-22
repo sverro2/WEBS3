@@ -13,7 +13,7 @@
 		  <div class="panel-body">
 			<div class="input-group">
 				<span class="input-group-addon">Facebook event-id</span>
-				{{ Form::text('fb-event-id', null, array('placeholder'=>'ID', 'class'=>'form-control', 'required'=>'', 'id'=>'fb-event-id')) }}
+				{{ Form::text('fb-event-id', null, array('placeholder'=>'ID', 'class'=>'form-control', 'id'=>'fb-event-id')) }}
 				<span class="input-group-btn">
 					<button class="btn btn-default" type="button" id="fb-event-submit">Opslaan</button>
 				</span>
@@ -62,6 +62,12 @@
 				{{ Form::select('event-location', $select_locations, null, array('class'=>'form-control')) }}
 			</div>
 			<br/>
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon">Maximum aantal deelnemers</span>
+			{{ Form::text('event-participants', null, array('class'=>'form-control', 'required'=>'', 'id'=>'event-participants')) }}
+			</div>
+			<br/>
+			<p>
 	  		{{ Form::textarea('' , '', array("class"=>"form-control", "id"=>"event-description")) }}
 			<div class="alert alert-info">
 				Schrijf hier een korte omschrijving van je evenement. Dit veld gebruiken om het reglement toe te lichten wordt afgeraden.
@@ -75,6 +81,22 @@
 			<h3 class="panel-title">Reglement</h3>
 		  </div>
 		  <div class="panel-body" id="rulepanel">
+		  	<div class="input-group input-group-lg">
+				<span class="input-group-addon">Voorgaand reglement:</span>
+				<?php
+					$select_rulesets = array();
+					foreach($organisation->rulesets as $ruleset)
+					{
+						$select_rulesets[$ruleset->id] = $ruleset->name;
+					}
+				?>
+				{{ Form::select('event-ruleset', $select_rulesets, null, array('class'=>'form-control', 'id'=>'event-ruleset-select')) }}
+
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">importeren</button>
+		      </span>
+			</div>
+			<br/>
 	  		{{ Form::textarea('', $organisation->defaultrules->rules, array("class"=>"form-control", "id"=>"event-rules")) }}
 			<div class="alert alert-info">
 				In dit veld wordt het standaardreglement van je organisatie automatisch ingeladen.
