@@ -43,6 +43,10 @@ class ManageController extends BaseController {
 		$event->location_id = Input::get('event-location');
 		$event->description = Input::get('event-description');
 		$event->fb_id = Input::get('fb-event-id');
+		$event->max_participants = Input::get('event-participants');
+		$full = (Input::get('event-full') === 'on' ? '1' : '0');
+		$event->is_full = $full;
+		Log::info(Input::get('event-full', false));
 		
 		$ruleset = RuleSet::findOrFail($event->ruleset->id);
 		$ruleset->rules = Input::get('event-rules');
@@ -67,6 +71,7 @@ class ManageController extends BaseController {
 		$event->description = Input::get('event-description');
 		$event->type_id = 4;
 		$event->fb_id = Input::get('fb-event-id');
+		$event->max_participants = Input::get('event-participants');
 
 		$rules = new RuleSet();
 		$rules->name = $event->name . $event->start;
