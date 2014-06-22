@@ -2,6 +2,7 @@
 
 class Location extends Eloquent {
 	protected $table = 'location';
+	public $timestamps = false;
 	
 	public function organisation(){
 		return $this->belongsTo('Organisation');

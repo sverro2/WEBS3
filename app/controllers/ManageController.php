@@ -22,7 +22,77 @@ class ManageController extends BaseController {
 	}
 
 	public function getCreateLocation($organisation_url, $location_id = null){
-		return $organisation_url . $location_id;
+		$data['location'] = Location::where('id', '=', $location_id)->first();
+		$data['location_id'] = $location_id;
+		$data['organisation_url'] = $organisation_url;
+		return View::make('organisation.location', $data);
+	}
+
+	public function postSaveLocation($organisation_url){
+		$input = Input::all();
+
+		$organisation_id = Organisation::where('url', '=', $organisation_url)->firstOrFail()->id;
+		$name_exists = Location::where('name', '=', $input['name'])->where('organisation_id', '=', $organisation_id)->first();
+		$url_exists = Location::where('url', '=', $input['url'])->where('organisation_id', '=', $organisation_id)->first();
+		$location_exists = Location::where('id', '=', $input['location_id'])->where('organisation_id', '=', $organisation_id)->first();
+
+		//var_dump(isset($name_exists));
+		//var_dump(isset($url_exists));
+		//var_dump(isset($location_exists));
+		//var_dump($organisation_id);
+
+
+		if($location_exists){
+			$location = Location::find($input['location_id']);
+
+			$location->name = $input['name'];
+			$location->url = $input['url'];
+			$location->address = $input['adress'];
+			$location->coordinates = $input['lat'] . ',' . $input['lng'];
+
+			$location->save();
+		}elseif(!$name_exists && !$url_exists){
+			$location = new Location();
+
+			$location->name = $input['name'];
+			$location->url = $input['url'];
+			$location->address = $input['adress'];
+			$location->coordinates = $input['lat'] . ',' . $input['lng'];
+			$location->organisation_id = $organisation_id;
+
+			$location->save();
+		}else{
+			$location_id = $input['location_id'];
+			return Redirect::to("manage/create-location/$organisation_url/$location_id");
+		}
+		
+		return Redirect::to("manage/organisation/$organisation_url");
+	}
+
+	public function postRemoveLocation($organisation_url){
+		$remove_location = Input::get('location');
+
+		if(AirsoftEvent::where('location_id', '=', $remove_location)->first()){
+			return "not removed";
+		}
+
+		$location = Location::find($remove_location);
+		if($location->delete()){
+			return "done";
+		}
+
+		return "error";
+	}
+
+	public function postRemoveEvent($organisation_url){
+		$remove_event = Input::get('event_id');
+
+		$location = AirsoftEvent::find($remove_event);
+		if($location->delete()){
+			return "done";
+		}
+
+		return "error";
 	}
 
 	public function getEditEvent($organisation_url, $event_id){

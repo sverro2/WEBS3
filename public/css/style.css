@@ -88,7 +88,7 @@ h4{
   background-color: #88342F;
 }
 
-#organisation .contentbox{
+.contentbox{
   margin-top: 15px;
   padding-bottom:15px;
   background-color:rgba(75,75,75,0.7);
@@ -111,8 +111,7 @@ h4{
 
 .contentbox .header div:nth-child(2){
   position: absolute;
-  right: 0px;
-  width: 30px;
+  right: 15px;
 }
 
 .contentbox .header a{
@@ -161,7 +160,7 @@ h4{
   padding-left: 10px;
 }
 
-.keyvaluetable input[type=text]{
+.keyvaluetable input[type=text]:not(.form-control){
   height: 2em;
   width: 300px;
   background-color: gray;

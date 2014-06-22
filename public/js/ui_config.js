@@ -111,6 +111,24 @@ $( document ).ready(function() {
             event_display(nEvents, 8);
          }
       });
+
+      /*---------------------------ACTION - REMOVING LOCATION-----------------------------*/
+      $('.removeLocation').click(function(event){
+        var clicked = $(this);
+        event.preventDefault();
+        if(confirm('Weet je zeker dat je de locatie wil verwijderen?')){
+          var locationId = $(this).data('location-id');
+          var removeURI = $(this).data('remove-url'); 
+
+          $.post(removeURI, {location: locationId}).done(function(value){
+            if(value != "done"){
+              alert('De locatie is niet verwijdert.\nEr zijn nog evenementen die van deze locatie gebruik maken');
+            }else{
+              clicked.closest('tr').hide();
+            }
+          });
+        }
+      });
 });
 
 function returnYoutubeURL(){
