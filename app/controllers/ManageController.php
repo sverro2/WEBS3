@@ -5,8 +5,8 @@ class ManageController extends BaseController {
 	public function __construct() {
 		parent::__construct();
 
-		//$this->beforeFilter('auth.manages');
-		//$this->beforeFilter('csrf', array('only' => 'postCreateEvent'));
+		$this->beforeFilter('auth.manages');
+		$this->beforeFilter('csrf', array('only' => 'postCreateEvent'));
 	}
 
 	public function getOrganisation($organisation_url)
