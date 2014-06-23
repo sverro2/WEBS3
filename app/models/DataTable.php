@@ -79,9 +79,7 @@ class DataTable{
 				//replace data when required
 				if(isset($value['enum'])){
 					foreach ($value['enum'] as $original => $replacement) {
-						foreach ($field_value as $key => $input) {
-							$field_value[$key] = str_replace($original, $replacement, $input);
-						}
+						$field_value = str_replace($original, $replacement, $field_value);
 					}
 				}
 
@@ -171,7 +169,7 @@ class DataTable{
 			}
 
 			$markup[] = array('text' => $text, 'words' => $replace, 'enum' => @$enum);
-
+			$enum = null;
 		}
 
 		return $markup;
