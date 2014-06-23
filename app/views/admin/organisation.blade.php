@@ -19,6 +19,7 @@
 	</div>
 
 </div>
+
 <br>
 <div class="col-md-12">
 	<div class="panel panel-default">
@@ -30,6 +31,46 @@
     	</div>
 	</div>
 </div>
+
+<div class="row" style="display:none;" id="userEdit">
+	<div class="col-md-12 contentbox">
+		<div class="header">
+			<div>Organisatie Accounts <span id="org-name"></span></div>
+			<div><span class="glyphicon glyphicon-ok"></span></div>
+		</div>
+		<div id="organisations">
+			<form>
+				<select id="userlist">
+				
+				@foreach ($users as $user)
+					<option value="{{$user->username}}">{{$user->username}}</option>
+				@endforeach
+
+				</select>
+			</form>
+
+		</div>
+		
+	</div>
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.editOrganisationUsers').click(function(event){
+		event.preventDefault();
+		$('#userEdit').slideUp();
+		$('#org-name').text($(this).data('org-name'));
+		$('#organisations').load('{{url("admin/organisation-user/9")}}')
+		$('#userEdit').slideDown();
+
+		$('html,body').delay(300).animate({
+   			scrollTop: $("#userEdit").offset().top + 10
+		});
+		
+	});
+});
+</script>
 
 
 @stop

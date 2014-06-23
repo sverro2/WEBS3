@@ -22,11 +22,13 @@ class AdminController extends BaseController {
 			'Organisatie' => '{name}',
 			'Facebook' => 'toon,{facebook}',
 			'Website' => 'link,{website}',
-			'Event' => 'open,#!organisation/index/{url}',
-			'Bewerk' => 'bewerk,#!manage/organisation/{url}'
+			'Event' => '<span class="glyphicon glyphicon-search"></span>,#!organisation/index/{url}',
+			'Bewerk' => '<span class="glyphicon glyphicon-wrench"></span>,#!manage/organisation/{url}',
+			'Gebruikers' => '<a href="#" class="editOrganisationUsers" data-org-id="{id}" data-org-name="{name}"><span class="glyphicon glyphicon-user"></span></a>'
 			);
 
 		$data['title'] = "Organisation";
+		$data['users'] = User::all();
 		$data['data_table'] = DataTable::create_data_table($input, $table_content, "organisation_table");
 
 		return View::make('admin.organisation', $data);
@@ -60,6 +62,14 @@ class AdminController extends BaseController {
 			$new_organisation->save();
 		}
 		return Redirect::to('admin/organisation');
+	}
+
+	public function getOrganisationUser($organisation_id){
+		$organisation_user = OrganisationUser::where('organisation_id', '=', $organisation_id)->get();
+		$table_content = array(
+			"Event" => "{user/username}"
+			);
+		return DataTable::create_data_table($organisation_user, $table_content, "user_table");
 	}
 
 	public function getEvent(){
