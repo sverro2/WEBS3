@@ -15,7 +15,7 @@
 				<tr><td></td><td><input type="submit" class="form-control" value="Aanmaken"></td></tr>
 			</table>
 		</form>
-		
+
 	</div>
 
 </div>
@@ -24,7 +24,7 @@
 <div class="col-md-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-	    		Alle Organisaties:
+	    	Alle Organisaties:
 	    </div>
     	<div class="panel-body">
 			{{ $data_table }}
@@ -38,37 +38,54 @@
 			<div>Organisatie Accounts <span id="org-name"></span></div>
 			<div><span class="glyphicon glyphicon-ok"></span></div>
 		</div>
-		<div id="organisations">
-			<form>
-				<select id="userlist">
-				
+			<div id="organisations">
+				<div class="input-group clickon">
+				<input type="text" list="userlist" class="form-control" id="organisationuser_select">
+				<datalist id="userlist">
 				@foreach ($users as $user)
-					<option value="{{$user->username}}">{{$user->username}}</option>
+					<option value="{{$user->username}}">
 				@endforeach
 
-				</select>
-			</form>
+				</datalist>
+				<div class="input-group-btn">
+					<input type="button" class="btn btn-default" value="Toevoegen" id="applyAccounts">
+				</div>
+			</div>
+
 
 		</div>
-		
+
 	</div>
 
 </div>
 
 <script type="text/javascript">
+var selectedOrganisation;
 $(document).ready(function(){
 	$('.editOrganisationUsers').click(function(event){
+		var selectedOrganisationName = $(this).data('org-name');
+		selectedOrganisation = $(this).data('org-id');
+
 		event.preventDefault();
 		$('#userEdit').slideUp();
-		$('#org-name').text($(this).data('org-name'));
-		$('#organisations').load('{{url("admin/organisation-user/9")}}')
+		$('#org-name').text(selectedOrganisationName);
+		//$('#organisations').load('{{url("admin/organisation-user/9")}}')
 		$('#userEdit').slideDown();
 
 		$('html,body').delay(300).animate({
    			scrollTop: $("#userEdit").offset().top + 10
 		});
-		
+
 	});
+
+	$('#applyAccounts').click(function(){
+		var selectedUser = $('#organisationuser_select').val();
+		$.post("{{url('admin/apply-account')}}", {user: selectedUser, organisation:selectedOrganisation}).done(function(status){
+			alert(status);
+		});
+	});
+
+
 });
 </script>
 

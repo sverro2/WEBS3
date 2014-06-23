@@ -64,6 +64,23 @@ class AdminController extends BaseController {
 		return Redirect::to('admin/organisation');
 	}
 
+	public function postApplyAccount(){
+		$input = Input::all();
+		$user_id = User::where('username', '=', $input['user'])->first()->id;
+		if(strlen($input['user']) < 1){
+			return "Geen user aangegeven!";
+		}
+		$logins = OrganisationUser::where('user_id', '=', $user_id);
+		$logins->delete();
+
+		$new_login = new OrganisationUser();
+		$new_login->organisation_id = $input['organisation'];
+		$new_login->user_id = $user_id;
+		$new_login->save();
+
+		return $input['user'] . $user_id . $input['organisation'];
+	}
+
 	public function getOrganisationUser($organisation_id){
 		$organisation_user = OrganisationUser::where('organisation_id', '=', $organisation_id)->get();
 		$table_content = array(
