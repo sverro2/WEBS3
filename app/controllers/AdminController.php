@@ -78,7 +78,7 @@ class AdminController extends BaseController {
 		$new_login->user_id = $user_id;
 		$new_login->save();
 
-		return $input['user'] . $user_id . $input['organisation'];
+		return "De gebruiker is aan de organisatie toegewezen.";
 	}
 
 	public function getOrganisationUser($organisation_id){
