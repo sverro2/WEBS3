@@ -40,7 +40,9 @@ class AdminController extends BaseController {
 			"Organisatie" => "{organisation/name}",
 			"Vol?" => "{is_full},,0=>Plaatsen Vrij|1=>Vol",
 			"Toon" => "Toon Evenement,#!/#displaymap={id}",
-			"Bewerk" => "bewerk,#!manage/create-event/{id}"
+			"Bewerk" => "bewerk,#!manage/edit-event/{organisation/url}/{id}",
+			"Remove" => "<a href='#' class='removeEvent' data-eventid='{id}' data-org-url='" . URL::to('manage/remove-event') .
+				"/{organisation/url}'><span class='glyphicon glyphicon-remove'></span></a>"
 			);
 
 		$data['title'] = "Events";

@@ -81,7 +81,7 @@
 					"Start" => "{getSimpleStartDate()}, {getDay()}",
 					"Vol?" => "{is_full},,0=>Plaatsen Vrij|1=>Vol",
 					"Toon" => "<span class='glyphicon glyphicon-search'></span>,#!/#displaymap={id}",
-					"Bewerk" => "<span class='glyphicon glyphicon-wrench'></span>,#!manage/create-event/$organisation->url/{id}",
+					"Bewerk" => "<span class='glyphicon glyphicon-wrench'></span>,#!manage/edit-event/$organisation->url/{id}",
 					"Remove" => "<a href='#' class='removeEvent' data-eventid='{id}'><span class='glyphicon glyphicon-remove'></span></a>"
 				);
 
@@ -161,7 +161,7 @@ $(document).ready(function(){
 				if(status == 'done'){
 					clicked.closest('tr').hide();
 				}else{
-					alert('Het evenement is niet verwijderd wegens een onbekende fout :-/');
+					alert('Het evenement is niet verwijdert wegens een onbekende fout :-/');
 				}
 			});
 		}
