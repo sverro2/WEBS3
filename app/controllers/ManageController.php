@@ -161,19 +161,30 @@ class ManageController extends BaseController {
 		$orgname = Input::get('orgname_edit');
 		$facebook = Input::get('facebook_edit');
 		$url = Input::get('url_edit');
-		$ruleset = Input::get('ruleset_edit');
+		$ruleset_input = Input::get('ruleset_edit');
 		$website = Input::get('website_edit');
 
+		$name_exists = Organisation::where('name', '=', $orgname)->where('id', '!=', $id)->first();
+		$url_exists = Organisation::where('url', '=', $url)->where('id', '!=', $id)->first();
+
+		//return $name_exists . $url_exists;
+		if($name_exists || $url_exists){
+			return "Url of organisatienaam bestaat al!";
+		}
+
 		$table = Organisation::where('id', '=', $id)->firstOrFail();
-		$ruleset = RuleSet::where('name', '=', $ruleset)->first();
 
 		$table->name = $orgname;
 		$table->facebook = $facebook;
 		$table->url = $url;
-		$table->ruleset_id = $ruleset->id;
 		$table->website = $website;
 
 		$table->save();
+
+		$ruleset = RuleSet::where('id', '=', $table->ruleset_id)->first();
+		$ruleset->rules = $ruleset_input;
+		$ruleset->save();
+
 		return "succes";
 	}
 }

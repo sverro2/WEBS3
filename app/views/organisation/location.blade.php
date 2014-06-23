@@ -41,7 +41,7 @@
                         <td></td>
                         <td>
                             <div class="input-group clickon">
-                                <input type="submit" style="visibility:hidden;" class="btn btn-default right" id="saveLocationInfo" type="button" value="Locatie Opslaan">  
+                                <input type="submit" style="visibility:hidden;" class="btn btn-default" id="saveLocationInfo" type="button" value="Locatie Opslaan">  
                             </div>
                             <br>
                         </td>
@@ -82,10 +82,6 @@
 #map_canvas {
     width: 100%;
     height: 600px;
-}
-
-.right{
-    margin-left: 20px;
 }
 </style>
 
@@ -152,7 +148,9 @@ function search(){
     var address = $('#locationInput').val();
     geocoder.geocode({'address' : address}, function(results, status){
         if(status == "OK"){
-            goTo(results[0].geometry.location);
+            var location = results[0].geometry.location;
+            addMarker(location);
+            goTo(location);
         }else{
             alert("Locatie niet gevonden!");
         }

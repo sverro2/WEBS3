@@ -145,12 +145,23 @@ h4{
   min-height:127px;
 }
 
+#ruleset_edit{
+  height: 10em;
+}
+
+#ruleset_edit:read-only{
+  background-color: gray;
+  border:none;
+  color:white; 
+}
+
 .keyvaluetable{
   margin: 15px;
   line-height: 2em;
 }
 
 .keyvaluetable td:nth-child(1){
+  vertical-align:text-top;
   margin-right: 5px;
   min-width: 200px;
   text-align: right;

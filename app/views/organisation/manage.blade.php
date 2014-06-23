@@ -24,12 +24,9 @@
 						<tr><td>Website:</td><td id="website_edit" class="organisation_info_edit"><span>{{$organisation->website}}</span></td></tr>
 						<tr><td>URL:</td><td id="url_edit" class="organisation_info_edit"><span>{{$organisation->url}}</span></td></tr>
 						<tr><td>Standaardreglement:</td>
-						
-						@if(!is_null($organisation->defaultRules))
-							<td id="ruleset_edit" class="organisation_info_edit"><span>{{($organisation->defaultRules->name)}}</span></td>
-						@else
-							<td id="ruleset_edit" class="organisation_info_edit"><span>geen</span></td>
-						@endif
+						<td>
+							<textarea class="form-control" id="ruleset_edit" placeholder="Het standaard regelement" readonly="true">{{($organisation->defaultRules->rules)}}</textarea>
+						</td>
 						
 						</tr>
 					</table>
@@ -115,12 +112,13 @@ $(document).ready(function(){
 
 		});
 
+		$('#ruleset_edit').removeAttr('readonly');
+
 	});
 
 	$('#organisation').on('click', '#edit_organisation_info.glyphicon-ok', function(event){
 		event.preventDefault();
-		$(this).removeClass('glyphicon-ok');
-		$(this).addClass('glyphicon-wrench');
+		var clicked = $(this);
 
 		var input = {};
 		
@@ -128,17 +126,26 @@ $(document).ready(function(){
 			var currentInput = $(this).children('input');
 			var textOfField = currentInput.val();
 			input[$(this)[0].id] = textOfField;
-			currentInput.replaceWith('<span>' + textOfField + '</span>');
-
 		});
 
 		//add id
 		input['id'] = $('#organisation').data('id');
+		input['ruleset_edit'] = $('#ruleset_edit').val();
 
 		$.post('{{url("manage/update-organisation-info/$organisation->url")}}', input, function(status){
 
 			if(status !== "succes"){
 				alert("Changes are not saved! An error occured...")
+			}else{
+				clicked.removeClass('glyphicon-ok');
+				clicked.addClass('glyphicon-wrench');
+				$('#ruleset_edit').attr('readonly', 'true');
+				$('.organisation_info_edit').each(function(){
+					var currentInput = $(this).children('input');
+					var textOfField = currentInput.val();
+					currentInput.replaceWith('<span>' + textOfField + '</span>');
+				});
+
 			}
 		});
 	
