@@ -70,7 +70,7 @@ Route::filter('auth.manages', function($route, $request)
 	{
 		$user = Session::get('user');
 		if($user->isAdmin()){
-			return true;
+			return;
 		}else{
 			$my_organisation = false;
 			foreach($user->organisations as $organisation)
