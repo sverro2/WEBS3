@@ -5,19 +5,16 @@
       <h1>AirCentral
       </h1>
       <p id="lead">
+        @section('subtitle')
         Your airsoft resource
+        @show
       </p>
     </a>
   </div>
   <div class="col-md-9" id="titleright">
     <div class="row">
       <div class="col-md-6">
-        <div class="input-group input-group">
-           <input type="text" class="form-control" placeholder="Zoek" id="searchfield">
-              <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-        </div>
+        @yield('search')
       </div>
       <div class="col-md-2">
          @if (! is_null($user))

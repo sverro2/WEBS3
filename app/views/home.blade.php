@@ -3,6 +3,15 @@
 	@include('layout.elements.map')
 @stop
 
+@section('search')
+    <div class="input-group input-group">
+       <input type="text" class="form-control" placeholder="Zoek" id="searchfield">
+          <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+    </div>
+@stop
+
 @section('bodycontent')
     <div id="yt" data-url="{{ @$ytURL->value }}"></div>
     <div id="raster"></div>

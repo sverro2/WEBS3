@@ -1,5 +1,9 @@
 @extends('layout.base')
 
+@section('subtitle')
+Admin panel
+@stop
+
 @section('content')
 <!-- upper section -->
 <div class="row">
