@@ -17,7 +17,7 @@ class AdminController extends BaseController {
 	}
 
 	public function getOrganisation(){
-		$input = Organisation::All();
+		$input = Organisation::all();
 		$table_content = array(
 			'Organisatie' => '{name}',
 			'Facebook' => 'toon,{facebook}',
@@ -30,6 +30,36 @@ class AdminController extends BaseController {
 		$data['data_table'] = DataTable::create_data_table($input, $table_content, "organisation_table");
 
 		return View::make('admin.organisation', $data);
+	}
+
+	public function postCreateOrganisation(){
+		$input = Input::all();
+		$validator = Validator::make(
+			array(
+					'name' => $input['org_name'],
+					'url' => $input['org_url'])
+			,array(
+					'name' => 'unique:organisation',
+					'url' => 'unique:organisation')
+			);
+
+		if($validator->passes()){
+			$new_organisation = new Organisation();
+			$new_organisation->name = $input['org_name'];
+			$new_organisation->url = $input['org_url'];
+			$new_organisation->save();
+			$new_id = $new_organisation->id;
+
+			$new_ruleset = new RuleSet();
+			$new_ruleset->name = 'Standaard';
+			$new_ruleset->organisation_id = $new_id;
+			$new_ruleset->save();
+			$ruleset_id = $new_ruleset->id;
+
+			$new_organisation->ruleset_id = $ruleset_id;
+			$new_organisation->save();
+		}
+		return Redirect::to('admin/organisation');
 	}
 
 	public function getEvent(){
